@@ -17,6 +17,6 @@ int main(int argc, char *argv[])
 
     //MainWindow w;
     //w.show();
-
+    //writing a comment before I push to see what happens
     return a.exec();
 }
