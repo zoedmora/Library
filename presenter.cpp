@@ -14,6 +14,11 @@ void::Presenter::testSlot()
     qDebug() << "Presenter is reading in the test signal";
 }
 
+void::Presenter::test()
+{
+    qDebug() << "Hello World!";
+}
+
 
 
 
