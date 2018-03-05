@@ -33,6 +33,7 @@ public:
 
 public slots:
     void testSlot();  // Charles' Test Slot
+    void test();
 };
 
 #endif // PRESENTER_H
