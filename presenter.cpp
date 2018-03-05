@@ -19,6 +19,11 @@ void::Presenter::test()
     qDebug() << "Hello World!";
 }
 
+void::Presenter::brianTest()
+{
+    qDebug() << "Testing";
+}
+
 
 
 

@@ -19,6 +19,9 @@ int main(int argc, char *argv[])
     // Steven Test
     QObject::connect(v,SIGNAL(testClick()), p, SLOT(test()));
 
+    // Brians Test
+    QObject::connect(v,SIGNAL(brianTestClicked()), p, SLOT(brianTest()));
+
     v->executeMainWindow();
 
     //MainWindow w;

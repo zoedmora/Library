@@ -8,6 +8,7 @@ View::View(QObject *parent)
 
     QObject::connect(mainWindow->findChild<QPushButton*>("pushButton"), SIGNAL(clicked()), this, SIGNAL(pushButtonClicked()));//Push Button
     QObject::connect(mainWindow->findChild<QPushButton*>("pushButton"), SIGNAL(clicked()), this, SIGNAL(testClick()));//Push Button
+    QObject::connect(mainWindow->findChild<QPushButton*>("pushButton"), SIGNAL(clicked()), this, SIGNAL(brianTestClicked()));//Push Button
 }
 
 void View::executeMainWindow()

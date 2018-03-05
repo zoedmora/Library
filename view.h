@@ -28,6 +28,7 @@ public:
 signals:
     void pushButtonClicked();
     void testClick();
+    void brianTestClicked();
 
 
 private:
