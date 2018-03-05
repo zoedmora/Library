@@ -15,6 +15,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+signals:
+    void okButtonWasClicked(QStringList*);
+
 private:
     Ui::MainWindow *ui;
 };

@@ -1,10 +1,12 @@
 #include "view.h"
+#include <QPushButton>
 
 View::View(QObject *parent)
     : QAbstractItemModel(parent)
 {
     mainWindow = new MainWindow;
 
+    QObject::connect(mainWindow->findChild<QPushButton*>("pushButton"), SIGNAL(clicked()), this, SIGNAL(pushButtonClicked()));//Push Button
 }
 
 void View::executeMainWindow()

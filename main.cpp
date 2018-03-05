@@ -13,6 +13,9 @@ int main(int argc, char *argv[])
     View* v = new View();
     Presenter* p = new Presenter(v, m);
 
+    // Charles Testing Slots
+    QObject::connect(v,SIGNAL(pushButtonClicked()), p, SLOT(testSlot()));
+
     v->executeMainWindow();
 
     //MainWindow w;
