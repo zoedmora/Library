@@ -1,10 +1,17 @@
 #include "presenter.h"
-
+#include "view.h"
+#include <QDebug>
 
 Presenter::Presenter(View* v, Model* m)
 {
     view_p = v;
     model_p = m;
+}
+
+void::Presenter::testSlot()
+{
+    // Enter in what the presenter should do here.
+    qDebug() << "Presenter is reading in the test signal";
 }
 
 

@@ -30,6 +30,9 @@ private:
 public:
 //Functions
     Presenter(View*, Model*); //Constructor
+
+public slots:
+    void testSlot();  // Charles' Test Slot
 };
 
 #endif // PRESENTER_H

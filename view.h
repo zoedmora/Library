@@ -25,6 +25,9 @@ public:
 //Functions
     void executeMainWindow();
 
+signals:
+    void pushButtonClicked();
+
 
 private:
 //Variables
