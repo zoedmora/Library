@@ -16,7 +16,7 @@ public:
     ~MainWindow();
 
 signals:
-    void okButtonWasClicked(QStringList*);
+    //void okButtonWasClicked(QStringList*);
 
 private:
     Ui::MainWindow *ui;

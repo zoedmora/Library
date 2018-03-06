@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
     View* v = new View();
     Presenter* p = new Presenter(v, m);
 
+
     // Charles Testing Slots
     QObject::connect(v,SIGNAL(pushButtonClicked()), p, SLOT(testSlot()));
 
@@ -21,6 +22,10 @@ int main(int argc, char *argv[])
 
     // Brians Test
     QObject::connect(v,SIGNAL(brianTestClicked()), p, SLOT(brianTest()));
+
+    // Zoed Test
+    QObject::connect(v,SIGNAL(zoedTestClicked()), p, SLOT(zoedTesting()));
+
 
     v->executeMainWindow();
 

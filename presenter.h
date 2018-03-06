@@ -33,8 +33,10 @@ public:
 
 public slots:
     void testSlot();  // Charles' Test Slot
-    void test();
-    void brianTest();
+    void test();        //Steve
+    void brianTest();   //Brian
+    void zoedTesting(); //Zoed
+
 };
 
 #endif // PRESENTER_H

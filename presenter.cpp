@@ -11,19 +11,23 @@ Presenter::Presenter(View* v, Model* m)
 void::Presenter::testSlot()
 {
     // Enter in what the presenter should do here.
-    qDebug() << "Presenter is reading in the test signal";
+    qDebug() << "Charles Testing";
 }
 
 void::Presenter::test()
 {
-    qDebug() << "Hello World!";
+    qDebug() << "Steven Testing";
 }
 
 void::Presenter::brianTest()
 {
-    qDebug() << "Testing";
+    qDebug() << "Brian Testing";
 }
 
+void::Presenter::zoedTesting()
+{
+    qDebug() << "Zoed Testing";
+}
 
 
 
