@@ -1,15 +1,18 @@
-#ifndef VIEW_H
-#define VIEW_H
+#ifndef MODEL__H
+#define MODEL__H
 
 #include <QAbstractItemModel>
-#include "mainwindow.h"""
+#include "databaseboundary.h"
 
-class View : public QAbstractItemModel
+class Model_ : public QAbstractItemModel
 {
     Q_OBJECT
 
 public:
-    explicit View(QObject *parent = nullptr);
+    explicit Model_(QObject *parent = nullptr);
+
+    // Header:
+    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 
     // Basic functionality:
     QModelIndex index(int row, int column,
@@ -21,20 +24,20 @@ public:
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
-public:
+
+
+
 //Functions
-    void executeMainWindow();
+    DatabaseBoundary* getDatabaseBoundary(){return databaseBoundary;}
 
-signals:
-    void pushButtonClicked();
-    void testClick();
-    void brianTestClicked();
-    void zoedTestClicked();
 
+public slots:
+    //void doSearchQuery(QStringList);
 
 private:
 //Variables
-    MainWindow* mainWindow;
+    DatabaseBoundary* databaseBoundary;// = new DatabaseBoundary();
+    //Presenter_* presenter_m;
 };
 
-#endif // VIEW_H
+#endif // MODEL__H

@@ -27,11 +27,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    presenter.cpp \
-#    searchforbookcontrol.cpp \
-#    login_logoutcontrol.cpp \
-#    editbookcontroller.cpp \
-#    deletebookcontroller.cpp \
+    presenter_.cpp \
+    searchforbookcontrol.cpp \
+    login_logoutcontrol.cpp \
+    editbookcontroller.cpp \
+    deletebookcontroller.cpp \
 
 #    mainwindow.cpp \
 #    loginwindow.cpp \
@@ -41,11 +41,11 @@ SOURCES += \
 #    databaseboundary.cpp \
 
 HEADERS += \
-    presenter.h \
-#    searchforbookcontrol.h \
-#    login_logoutcontrol.h \
-#    editbookcontroller.h \
-#    deletebookcontroller.h
+    presenter_.h \
+    searchforbookcontrol.h \
+    login_logoutcontrol.h \
+    editbookcontroller.h \
+    deletebookcontroller.h
 
 #    mainwindow.h \
 #   loginwindow.h \

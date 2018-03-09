@@ -27,15 +27,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     mainwindow.cpp \
-#    loginwindow.cpp \
-#    frame.cpp \
-    view.cpp \
+    loginwindow.cpp \
+    frame.cpp \
+    view_.cpp \
 
 HEADERS += \
     mainwindow.h \
-#    loginwindow.h \
-#    frame.h \
-    view.h \
+    loginwindow.h \
+    frame.h \
+    view_.h \
 
 #FORMS += \
 #    mainwindow.ui \
