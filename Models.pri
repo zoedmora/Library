@@ -26,17 +26,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-#    book.cpp \
-    model.cpp \
-#    databaseboundary.cpp \
+    book.cpp \
+    model_.cpp \
+    databaseboundary.cpp \
 
 HEADERS += \
-#    book.h \
-    model.h \
-#    databaseboundary.h \
+    book.h \
+    model_.h \
+    databaseboundary.h \
 
 #FORMS += \
 #    mainwindow.ui \
 #    loginwindow.ui \
 #    bookinfoframe.ui \
-#    frame.ui
+#    frame.ui \
+#    adduser.ui
