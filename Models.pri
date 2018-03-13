@@ -39,4 +39,5 @@ HEADERS += \
 #    mainwindow.ui \
 #    loginwindow.ui \
 #    bookinfoframe.ui \
-#    frame.ui
+#    frame.ui \
+#    adduser.ui

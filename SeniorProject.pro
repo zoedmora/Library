@@ -34,7 +34,8 @@ FORMS += \
     frame.ui \
     mainwindow_og.ui \
     mainwindow.ui \
-    mainwindow_copy.ui
+    mainwindow_copy.ui \
+    adduser.ui
 
 
 
