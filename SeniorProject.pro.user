@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+
 <!-- Written by QtCreator 4.5.0, 2018-03-11T15:43:30. -->
+
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -123,6 +125,7 @@
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Charles/Desktop/build-SeniorProject-Desktop_Qt_5_10_0_MinGW_32bit-Release</value>
+
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -177,6 +180,7 @@
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Charles/Desktop/build-SeniorProject-Desktop_Qt_5_10_0_MinGW_32bit-Profile</value>
+
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>

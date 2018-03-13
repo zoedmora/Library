@@ -70,9 +70,22 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="viewProfileButton">
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="viewHistoryButton">
          <property name="text">
-          <string>View Profile</string>
+          <string>View History</string>
          </property>
         </widget>
        </item>
@@ -176,12 +189,6 @@
             <widget class="QPushButton" name="searchButton">
              <property name="text">
               <string>Search</string>
-             </property>
-             <property name="autoDefault">
-              <bool>false</bool>
-             </property>
-             <property name="default">
-              <bool>false</bool>
              </property>
             </widget>
            </item>

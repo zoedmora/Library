@@ -1,14 +1,22 @@
-#ifndef MODEL_H
-#define MODEL_H
+#ifndef EDITBOOKCONTROLLER_H
+#define EDITBOOKCONTROLLER_H
 
 #include <QAbstractItemModel>
+#include "mainwindow.h"
+#include "databaseboundary.h"
+#include <QList>
+#include "book.h"
+#include <QDebug>
 
-class Model : public QAbstractItemModel
+class EditBookController : public QAbstractItemModel
 {
     Q_OBJECT
 
 public:
-    explicit Model(QObject *parent = nullptr);
+    explicit EditBookController(QObject *parent = nullptr);
+
+    // Header:
+    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 
     // Basic functionality:
     QModelIndex index(int row, int column,
@@ -20,7 +28,10 @@ public:
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
+//Functions
+    void run(MainWindow*, DatabaseBoundary*);
+
 private:
 };
 
-#endif // MODEL_H
+#endif // EDITBOOKCONTROLLER_H
