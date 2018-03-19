@@ -84,6 +84,41 @@ QList<Book> DatabaseBoundary::runSelectQuery(QStringList criteria)
 
 }
 
+void DatabaseBoundary::addUserToDatabase(QStringList* userInfo)
+{
+    qDebug() << "Reached DB Boundary for adding user.";
+
+    QString id = userInfo->at(0);
+    QString password = userInfo->at(1);
+    QString accountName = userInfo->at(2);
+    QString fName = userInfo->at(3);
+    QString lName = userInfo->at(4);
+    QString address = userInfo->at(5);
+    QString city = userInfo->at(6);
+    QString zip = userInfo->at(7);
+    QString email = userInfo->at(8);
+    QString phone = userInfo->at(9);
+
+    // Form query string
+    queryString = "INSERT INTO LibraryDB.User (userName, idUser, password, first_name, last_name,"
+                  " address, city, email, zip, phone) VALUES ('" + accountName + "', '" + id + "', '" +
+                  password + "', '" + fName + "', '" + lName + "', '" + address + "', '" + city + "', '" +
+                  email + "', '" + zip + "', '" + phone + "');";
+
+    query = QSqlQuery();
+    query.exec(queryString.toStdString().c_str());
+
+    if(query.numRowsAffected() == 1)
+    {
+        qDebug() << "Letting user know that we have success.";
+    }
+
+    else
+    {
+        qDebug() << "The user has not been added.";
+    }
+}
+
 void DatabaseBoundary::isUserAndPwdInDatabase(QStringList* nameAndPwd)
 {
     qDebug() << "About to see if the following are in the database: " << nameAndPwd->at(0) << nameAndPwd->at(1);

@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->addBookButton->hide();
     ui->editBookButton->hide();
     ui->deleteBookButton->hide();
-    ui->viewProfileButton->hide();
+    ui->addUserButton->hide();
     ui->payFeesButton->hide();
 }
 
@@ -160,12 +160,12 @@ void MainWindow::unhideEmployeeUserButtons()
     ui->addBookButton->show();
     ui->editBookButton->show();
     ui->deleteBookButton->show();
-    ui->viewProfileButton->show();
+    ui->addUserButton->show();
 }
 
 void MainWindow::unhideRegularUserButtons()
 {
-    ui->viewProfileButton->show();
+    ui->addUserButton->show();
     ui->payFeesButton->show();
 }
 
@@ -174,7 +174,7 @@ void MainWindow::hideAllExtraButtons()
     ui->addBookButton->hide();
     ui->editBookButton->hide();
     ui->deleteBookButton->hide();
-    ui->viewProfileButton->hide();
+    ui->addUserButton->hide();
     ui->payFeesButton->hide();
 }
 

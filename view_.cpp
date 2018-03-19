@@ -6,12 +6,14 @@ View_::View_(QObject *parent)
 {
     mainWindow = new MainWindow;
     logInWindow = new LogInWindow;
+    addUserWindow = new addnewuser;
     this->setObjectName("Yo Mamma----------------------------------");
 
     QObject::connect(mainWindow->findChild<QPushButton*>("searchButton"), SIGNAL(clicked()), this, SIGNAL(searchButtonClicked()));//Search Button
     QObject::connect(mainWindow->findChild<QPushButton*>("logInButton"), SIGNAL(clicked()), this, SIGNAL(logInButtonClicked()));//Log In Button
     QObject::connect(mainWindow->findChild<QPushButton*>("editBookButton"), SIGNAL(clicked()), this, SIGNAL(editButtonClicked()));//Edit Button
     QObject::connect(mainWindow->findChild<QPushButton*>("deleteBookButton"), SIGNAL(clicked()), this, SIGNAL(deleteButtonClicked()));//Delete Button
+    QObject::connect(mainWindow->findChild<QPushButton*>("addUserButton"), SIGNAL(clicked()), this, SIGNAL(addUserButtonClicked()));//Add User Button
 }
 
 void View_::executeMainWindow()
@@ -22,6 +24,8 @@ void View_::executeMainWindow()
 MainWindow* View_::getMainWindow(){return mainWindow;}
 
 LogInWindow* View_::getLogInWindow(){return logInWindow;}
+
+addnewuser* View_::getAddUserWindow(){return addUserWindow;}
 
 
 

@@ -24,6 +24,9 @@ int main(int argc, char *argv[])
     //For Delete Book Button
     QObject::connect(v, SIGNAL(deleteButtonClicked()), p, SLOT(deleteBooks()));
 
+    //For Add User Button
+    QObject::connect(v, SIGNAL(addUserButtonClicked()), p, SLOT(addUser()));
+
 
 
     //QObject::connect(v,SIGNAL(testSignal()), p, SLOT(testReceiver()));
@@ -32,3 +35,4 @@ int main(int argc, char *argv[])
 
     return a.exec();
 }
+

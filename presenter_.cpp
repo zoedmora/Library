@@ -11,6 +11,7 @@ Presenter_::Presenter_(View_* v, Model_* m)
     logIn_LogOutControl = new LogIn_LogOutControl();
     editBookController = new EditBookController();
     deleteBookController = new DeleteBookController();
+    addUserController = new AddUserController();
 
 }
 
@@ -54,6 +55,13 @@ void Presenter_::deleteBooks()
     qDebug() << "Presenter can see that DELETE button was clicked.";
     /* CREATE AND RUN THE CONTROLLER FOR EDITING BOOKS */
     deleteBookController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary());
+}
+
+void Presenter_::addUser()
+{
+    qDebug() << "Presenter can see that AddUser button was clicked.";
+    /* CREATE AND RUN THE CONTROLLER FOR ADDING USERS */
+    addUserController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary());
 }
 
 

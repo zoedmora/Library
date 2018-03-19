@@ -5,6 +5,7 @@
 #include <QDebug>
 #include "mainwindow.h"
 #include "loginwindow.h"
+#include "addnewuser.h"
 
 class View_ : public QAbstractItemModel
 {
@@ -27,6 +28,7 @@ public:
     void executeMainWindow();
     MainWindow* getMainWindow();//{return mainWindow;}
     LogInWindow* getLogInWindow();//{return logInWindow;}
+    addnewuser* getAddUserWindow(); //{return addUserWindow;}
     void hey(){qDebug() << "Its me!!!!!!!!!!!!!!!!!!!!!";}
 
 signals:
@@ -35,12 +37,14 @@ signals:
     void logInButtonClicked();
     void editButtonClicked();
     void deleteButtonClicked();
+    void addUserButtonClicked();
 
 
 private:
 //Variables
     MainWindow* mainWindow;
     LogInWindow* logInWindow;
+    addnewuser* addUserWindow;
 };
 
 #endif // VIEW__H

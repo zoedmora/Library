@@ -9,6 +9,7 @@
 #include "login_logoutcontrol.h"
 #include "editbookcontroller.h"
 #include "deletebookcontroller.h"
+#include "addusercontroller.h"
 
 
 class Presenter_ : public QAbstractItemModel
@@ -39,12 +40,13 @@ private:
     LogIn_LogOutControl * logIn_LogOutControl;
     EditBookController * editBookController;
     DeleteBookController* deleteBookController;
+    AddUserController* addUserController;
 
 public:
 //Functions
     Presenter_(View_*, Model_*); //Constructor
     SearchForBookControl* getSearchForBookControl(){return searchForBookControl;}
-
+    AddUserController* getAddUserController(){return addUserController;}
 signals:
 
 
@@ -53,6 +55,7 @@ public slots:
     void logIn_logOut();
     void editBooks();
     void deleteBooks();
+    void addUser();
 
 
 
