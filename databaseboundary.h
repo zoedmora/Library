@@ -43,6 +43,7 @@ public:
 
 public slots:
     void isUserAndPwdInDatabase(QStringList*);
+    void addUserToDatabase(QStringList*);
 
 
 private:
