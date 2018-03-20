@@ -30,7 +30,8 @@ int main(int argc, char *argv[])
     //For Pay Fees Button
     QObject::connect(v, SIGNAL(payFeesButtonClicked()), p, SLOT(payFees()));
 
-
+    // Add Book Button
+    QObject::connect(v, SIGNAL(addBookButtonClicked()), p, SLOT(addBooks()));
 
     //QObject::connect(v,SIGNAL(testSignal()), p, SLOT(testReceiver()));
 

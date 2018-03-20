@@ -44,6 +44,7 @@ public:
 public slots:
     void isUserAndPwdInDatabase(QStringList*);
     void addUserToDatabase(QStringList*);
+    void Add_Book(QStringList*);
 
 
 private:
