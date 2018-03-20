@@ -84,6 +84,38 @@ QList<Book> DatabaseBoundary::runSelectQuery(QStringList criteria)
 
 }
 
+void DatabaseBoundary::Add_Book(QStringList* bookInfo)
+{
+    qDebug() << "Adding book?";
+    QString title = bookInfo->at(0);
+    QString author = bookInfo->at(1);
+    QString genre = bookInfo->at(2);
+    QString publisher = bookInfo->at(3);
+    QString ISBN = bookInfo->at(4);
+
+    /*QString*/ queryString = QString();
+    queryString = "INSERT INTO LibraryDB.Book(ISBN, Title, Author, Genre, Publisher)"
+                  "VALUES('" + ISBN + "','" + title + "','" + author + "','" + genre + "','" + publisher + "')";
+
+    /*QSqlQuery*/ query = QSqlQuery();
+
+    query.exec(queryString.toStdString().c_str());
+
+    /*check if it worked */
+    queryString = "SELECT * FROM LibraryDB.Book WHERE ISBN = '" + ISBN;
+
+    if(query.numRowsAffected() == 1)
+    {
+        qDebug() << "Letting user know that we have success.";
+    }
+
+    else
+    {
+        qDebug() << "The user has not been added.";
+    }
+
+}
+
 void DatabaseBoundary::addUserToDatabase(QStringList* userInfo)
 {
     qDebug() << "Reached DB Boundary for adding user.";

@@ -41,6 +41,7 @@ signals:
     void deleteButtonClicked();
     void addUserButtonClicked();
     void payFeesButtonClicked();
+    void addBookButtonClicked();
 
 
 private:
