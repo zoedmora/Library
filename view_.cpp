@@ -14,7 +14,9 @@ View_::View_(QObject *parent)
     QObject::connect(mainWindow->findChild<QPushButton*>("editBookButton"), SIGNAL(clicked()), this, SIGNAL(editButtonClicked()));//Edit Button
     QObject::connect(mainWindow->findChild<QPushButton*>("deleteBookButton"), SIGNAL(clicked()), this, SIGNAL(deleteButtonClicked()));//Delete Button
     QObject::connect(mainWindow->findChild<QPushButton*>("addUserButton"), SIGNAL(clicked()), this, SIGNAL(addUserButtonClicked()));//Add User Button
+    QObject::connect(mainWindow->findChild<QPushButton*>("payFeesButton"), SIGNAL(clicked()), this, SIGNAL(payFeesButtonClicked()));//Pay Fees Button
 }
+
 
 void View_::executeMainWindow()
 {
@@ -26,6 +28,8 @@ MainWindow* View_::getMainWindow(){return mainWindow;}
 LogInWindow* View_::getLogInWindow(){return logInWindow;}
 
 addnewuser* View_::getAddUserWindow(){return addUserWindow;}
+
+PayFeesWindow* View_::getPayFeesWindow(){return payFeesWindow;}
 
 
 

@@ -12,6 +12,7 @@ Presenter_::Presenter_(View_* v, Model_* m)
     editBookController = new EditBookController();
     deleteBookController = new DeleteBookController();
     addUserController = new AddUserController();
+    payFeesController = new PayFeesController();
 
 }
 
@@ -64,6 +65,12 @@ void Presenter_::addUser()
     addUserController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary());
 }
 
+void Presenter_::payFees()
+{
+    qDebug() << "Presenter can see that PAY FEES button was clicked.";
+    /* CREATE AND RUN THE CONTROLLER FOR PAYING FEES */
+    payFeesController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary());
+}
 
 
 

@@ -27,6 +27,9 @@ int main(int argc, char *argv[])
     //For Add User Button
     QObject::connect(v, SIGNAL(addUserButtonClicked()), p, SLOT(addUser()));
 
+    //For Pay Fees Button
+    QObject::connect(v, SIGNAL(payFeesButtonClicked()), p, SLOT(payFees()));
+
 
 
     //QObject::connect(v,SIGNAL(testSignal()), p, SLOT(testReceiver()));
@@ -35,4 +38,5 @@ int main(int argc, char *argv[])
 
     return a.exec();
 }
+
 

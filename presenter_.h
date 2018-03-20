@@ -10,6 +10,7 @@
 #include "editbookcontroller.h"
 #include "deletebookcontroller.h"
 #include "addusercontroller.h"
+#include "payfeescontroller.h"
 
 
 class Presenter_ : public QAbstractItemModel
@@ -41,6 +42,7 @@ private:
     EditBookController * editBookController;
     DeleteBookController* deleteBookController;
     AddUserController* addUserController;
+    PayFeesController* payFeesController;
 
 public:
 //Functions
@@ -56,7 +58,7 @@ public slots:
     void editBooks();
     void deleteBooks();
     void addUser();
-
+    void payFees();
 
 
 };
