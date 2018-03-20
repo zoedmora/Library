@@ -38,7 +38,7 @@
     <string>CheckBox</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>12</x>
@@ -54,7 +54,7 @@
        <bool>true</bool>
       </property>
       <property name="text">
-       <string>Tittle:</string>
+       <string>Title:</string>
       </property>
      </widget>
     </item>
@@ -95,13 +95,13 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>230</x>
      <y>10</y>
      <width>192</width>
-     <height>61</height>
+     <height>68</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
