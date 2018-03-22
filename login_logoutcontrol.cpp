@@ -3,15 +3,18 @@
 
 
 
-void LogIn_LogOutControl::run(MainWindow* mw, DatabaseBoundary* dbb)
+void LogIn_LogOutControl::run(MainWindow* mw, DatabaseBoundary* dbb, LogedInUserData* liud)
 {
     qDebug() << "Running Log In Control";
+    //qDebug() << "Person loged in is: " << liud->getLogedInUserName();
 
     LogInWindow* liw = new LogInWindow();
 
     //connection between log in window and this database boundary class
     QObject::connect(liw, SIGNAL(okButtonWasClicked(QStringList*)), dbb, SLOT(isUserAndPwdInDatabase(QStringList*)));
 
+    //connection between log in window and this loged in user data class
+    QObject::connect(liw, SIGNAL(sendUserName(QString)), liud, SLOT(saveUserName(QString)));
 
 /* IF LOGED OUT (meaning button says loged in), OPEN CONFIMATION WINDOW */
     if(mw->isLogedIn() == false)
@@ -56,6 +59,7 @@ void LogIn_LogOutControl::run(MainWindow* mw, DatabaseBoundary* dbb)
             mw->resetOnDeleteMode();
     }
 
+    qDebug() << "Triple Checking That The Username Stays Persistant: " << liud->getLogedInUserName();
 }
 
 

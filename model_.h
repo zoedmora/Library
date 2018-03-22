@@ -3,6 +3,7 @@
 
 #include <QAbstractItemModel>
 #include "databaseboundary.h"
+#include "logedinuserdata.h"
 
 class Model_ : public QAbstractItemModel
 {
@@ -29,6 +30,7 @@ public:
 
 //Functions
     DatabaseBoundary* getDatabaseBoundary(){return databaseBoundary;}
+    LogedInUserData* getLogedInUserData(){return logedInUserData;}
 
 
 public slots:
@@ -36,8 +38,9 @@ public slots:
 
 private:
 //Variables
-    DatabaseBoundary* databaseBoundary;// = new DatabaseBoundary();
-    //Presenter_* presenter_m;
+    DatabaseBoundary* databaseBoundary;
+    LogedInUserData* logedInUserData;
+
 };
 
 #endif // MODEL__H

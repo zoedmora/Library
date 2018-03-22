@@ -50,6 +50,12 @@ void LogInWindow::accept()
     //checking if log in was successful
     if(userInfo->back() == "*"  || userInfo->back() == "_")
     {
+        //success
+
+        //send authenticated username to our persistant userdata
+        //QString name = userInfo->front();
+        emit sendUserName(userInfo->front());
+
         //to show if we have an employee account
         if(userInfo->back() == "_")
             employeeAccount = true;
@@ -58,7 +64,7 @@ void LogInWindow::accept()
         logedIn = true;
         QDialog::accept();
     }
-    else
+    else //failure
     {
         qDebug() << "Log in not successful";
 

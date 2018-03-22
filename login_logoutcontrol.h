@@ -7,6 +7,7 @@
 #include <QStringList>
 #include <QDialogButtonBox>
 #include "databaseboundary.h"
+#include "logedinuserdata.h"
 
 class LogIn_LogOutControl : public QAbstractItemModel
 {
@@ -17,7 +18,7 @@ private:
 
 public:
 //Functions
-    void run(MainWindow*, DatabaseBoundary*);
+    void run(MainWindow*, DatabaseBoundary*, LogedInUserData*);
 
 public slots:
     //void checkCredentials(QStringList);

@@ -99,11 +99,11 @@ void DatabaseBoundary::Add_Book(QStringList* bookInfo)
 
     /*QSqlQuery*/ query = QSqlQuery();
 
+    qDebug() << "Query is: " << queryString;
+
     query.exec(queryString.toStdString().c_str());
 
     /*check if it worked */
-    queryString = "SELECT * FROM LibraryDB.Book WHERE ISBN = '" + ISBN;
-
     if(query.numRowsAffected() == 1)
     {
         qDebug() << "Letting user know that we have success.";

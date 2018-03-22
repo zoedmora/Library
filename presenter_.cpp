@@ -42,7 +42,7 @@ void Presenter_::logIn_logOut()
 {
     qDebug() << "Presenter can see that LOG IN / LOG OUT button was clicked.";
 /* CREATE AND RUN THE CONTROLLER FOR LOGING IN OR LOGING OUT */
-    logIn_LogOutControl->run(view_p->getMainWindow(), model_p->getDatabaseBoundary());
+    logIn_LogOutControl->run(view_p->getMainWindow(), model_p->getDatabaseBoundary(), model_p->getLogedInUserData());
 }
 
 void Presenter_::editBooks()

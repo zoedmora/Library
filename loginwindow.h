@@ -26,6 +26,7 @@ public:
 
 signals:
     void okButtonWasClicked(QStringList*);
+    void sendUserName(QString);
 
 public slots:
     //void on_buttonBox_accepted();

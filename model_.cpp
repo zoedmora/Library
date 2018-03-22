@@ -27,6 +27,7 @@ Model_::Model_(QObject *parent)
     : QAbstractItemModel(parent)
 {
     databaseBoundary = new DatabaseBoundary();
+    logedInUserData = new LogedInUserData();
 }
 
 QVariant Model_::headerData(int section, Qt::Orientation orientation, int role) const

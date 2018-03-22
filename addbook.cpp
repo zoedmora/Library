@@ -17,6 +17,7 @@ addbook::~addbook()
 void addbook::accept()
 {
      qDebug() << "Ok button was clicked.";
+     bookInfo->clear();
      bookInfo->append(ui->Title_Field->text());
      bookInfo->append(ui->Author_Field->text());
      bookInfo->append(ui->Genre_Field->text());
