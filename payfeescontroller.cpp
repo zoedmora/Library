@@ -5,15 +5,26 @@ PayFeesController::PayFeesController(QObject *parent)
 {
 }
 
-void PayFeesController::run(MainWindow* mw, DatabaseBoundary* dbb)
+void PayFeesController::run(MainWindow* mw, DatabaseBoundary* dbb, LogedInUserData* liud)
 {
     qDebug() << "Running Pay Fees Controller";
 
     PayFeesWindow* pfw = new PayFeesWindow();
 
-    QObject::connect(pfw, SIGNAL(OKButtonWasClicked(QStringList*)), dbb, SLOT(payUserFees(QStringList*)));
+    QObject::connect(pfw, SIGNAL(OKButtonWasClicked(QString*)), dbb, SLOT(payUserFees(QString*)));
+
+    QString currentUser = liud->getLogedInUserName();
+
+    //qDebug() << "Person logged in is: " << currentUser;
+
+    QString balance = dbb->getUserBalance(currentUser);
+
+    //qDebug() << "Balance is: $" << balance;
+
+    pfw->setBalance(balance);
 
     pfw->exec();
+
 }
 
 

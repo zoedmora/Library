@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QDebug>
 #include <QStringList>
+#include <logedinuserdata.h>
 
 namespace Ui {
 class PayFeesWindow;
@@ -18,13 +19,14 @@ public:
     ~PayFeesWindow();
     void accept();
     void reject();
+    void setBalance(QString);
 
 signals:
-    void OKButtonWasClicked(QStringList*);
+    void OKButtonWasClicked(QString*);
 
 private:
     Ui::PayFeesWindow *ui;
-    QStringList* userFees;
+    QString* paymentAmount;
 
 };
 

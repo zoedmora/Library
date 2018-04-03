@@ -10,6 +10,7 @@
 #include <QSqlError>
 #include <QString>
 #include "frame.h"
+#include "logedinuserdata.h"
 
 
 class DatabaseBoundary : public QAbstractItemModel
@@ -40,11 +41,13 @@ public:
     void updateBookQuantity(QList<Frame*>*);
     void runDeleteQuery(QStringList*);
     QList<Book> runLastSelectQuery();
+    QString getUserBalance(QString);
 
 public slots:
     void isUserAndPwdInDatabase(QStringList*);
     void addUserToDatabase(QStringList*);
     void Add_Book(QStringList*);
+    void payUserFees(QString*);
 
 
 private:
@@ -53,6 +56,8 @@ private:
     QSqlQuery query;
     QString queryString;//query string
     QString latestSearchQuery;
+    QString userName;
+    QString balance;
 
 
 };

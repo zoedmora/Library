@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     Presenter_* p = new Presenter_(v, m);
 
     //For Search Button
-    QObject::connect(v,SIGNAL(searchButtonClicked()), p, SLOT(search()));
+    QObject::connect(v, SIGNAL(searchButtonClicked()), p, SLOT(search()));
 
     //For Log In Button
     QObject::connect(v, SIGNAL(logInButtonClicked()), p, SLOT(logIn_logOut()));

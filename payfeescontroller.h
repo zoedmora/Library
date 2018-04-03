@@ -27,7 +27,7 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
 //Functions
-    void run(MainWindow*, DatabaseBoundary*);
+    void run(MainWindow*, DatabaseBoundary*, LogedInUserData*);
 
 private:
 };

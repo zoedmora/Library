@@ -70,7 +70,7 @@ void Presenter_::payFees()
 {
     qDebug() << "Presenter can see that PAY FEES button was clicked.";
     /* CREATE AND RUN THE CONTROLLER FOR PAYING FEES */
-    payFeesController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary());
+    payFeesController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary(), model_p->getLogedInUserData());
 }
 
 void Presenter_::addBooks()

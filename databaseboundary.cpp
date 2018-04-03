@@ -151,6 +151,39 @@ void DatabaseBoundary::addUserToDatabase(QStringList* userInfo)
     }
 }
 
+void DatabaseBoundary::payUserFees(QString* paymentAmount)
+{
+     qDebug() << "Reached DB Boundary for paying fees.";
+
+     //qDebug() << "payment amount: " << *paymentAmount;
+
+     int paymentAmountInt = paymentAmount->toInt();
+     int balanceInt = balance.toInt();
+     int result = balanceInt - paymentAmountInt;
+     if(result < 0){
+         qDebug() << "paying too much!";
+     }
+     else {
+         QString resultString = QString::number(result);
+         //qDebug() << "result: " << resultString;
+         queryString = "UPDATE LibraryDB.User SET fee= '" + resultString + "' WHERE userName = '" + userName + "'";
+         query = QSqlQuery();
+         query.exec(queryString.toStdString().c_str());
+     }
+}
+
+QString DatabaseBoundary::getUserBalance(QString currentUser)
+{
+   queryString = "SELECT fee FROM LibraryDB.User WHERE userName = '" + currentUser + "'";
+   query = QSqlQuery();
+   query.exec(queryString.toStdString().c_str());
+   query.next();
+   QString fee = query.value(0).toString();
+   userName = currentUser;
+   balance = fee;
+   return fee;
+}
+
 void DatabaseBoundary::isUserAndPwdInDatabase(QStringList* nameAndPwd)
 {
     qDebug() << "About to see if the following are in the database: " << nameAndPwd->at(0) << nameAndPwd->at(1);

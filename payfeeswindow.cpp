@@ -7,7 +7,7 @@ PayFeesWindow::PayFeesWindow(QWidget *parent) :
     ui(new Ui::PayFeesWindow)
 {
     ui->setupUi(this);
-    userFees = new QStringList();
+    paymentAmount = new QString();
 }
 
 PayFeesWindow::~PayFeesWindow()
@@ -19,8 +19,8 @@ void PayFeesWindow::accept()
 {
     qDebug() << "OK button was clicked.";
 
-    userFees->append(ui->lineEdit->text());
-    emit OKButtonWasClicked(userFees);
+    paymentAmount->append(ui->paymentLineEdit->text());
+    emit OKButtonWasClicked(paymentAmount);
     QDialog::accept();
 }
 
@@ -28,4 +28,9 @@ void PayFeesWindow::reject()
 {
     qDebug() << "Reject was called.";
     QDialog::reject();
+}
+
+void PayFeesWindow::setBalance(QString balance)
+{
+    ui->label_3->setText("Your current balance is: $" + balance + ".00");
 }
