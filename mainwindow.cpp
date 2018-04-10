@@ -42,8 +42,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->addBookButton->hide();
     ui->editBookButton->hide();
     ui->deleteBookButton->hide();
-    //ui->addUserButton->hide();
+    ui->addUserButton->hide();
     ui->payFeesButton->hide();
+    ui->viewProfileButton->hide();
 }
 
 /**
@@ -118,7 +119,7 @@ void MainWindow::showResultsOnScreen(QList<Book> list)
 
         //clear the old stuuf
         bookResults.clear();
-        deleteOldResults();
+        //deleteOldResults();
 
         //create one frame per book result
         for(int i = 0; i < list.size(); i++)
@@ -160,13 +161,15 @@ void MainWindow::unhideEmployeeUserButtons()
     ui->addBookButton->show();
     ui->editBookButton->show();
     ui->deleteBookButton->show();
-    //ui->addUserButton->show();
+    ui->addUserButton->show();
+    ui->viewProfileButton->show();
 }
 
 void MainWindow::unhideRegularUserButtons()
 {
     //ui->addUserButton->show();
     ui->payFeesButton->show();
+    ui->viewProfileButton->show();
 }
 
 void MainWindow::hideAllExtraButtons()
@@ -176,6 +179,7 @@ void MainWindow::hideAllExtraButtons()
     ui->deleteBookButton->hide();
     ui->addUserButton->hide();
     ui->payFeesButton->hide();
+    ui->viewProfileButton->hide();
 }
 
 void MainWindow::hideCheckBoxesFromFrames()

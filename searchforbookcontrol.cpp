@@ -2,9 +2,6 @@
 #include "frame.h"
 #include <QVBoxLayout>
 
-//SearchForBookControl::SearchForBookControl()
-//{
-//}
 
 void SearchForBookControl::run(MainWindow* mw, DatabaseBoundary* dbb)
 {
