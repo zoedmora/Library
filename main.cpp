@@ -33,6 +33,9 @@ int main(int argc, char *argv[])
     // Add Book Button
     QObject::connect(v, SIGNAL(addBookButtonClicked()), p, SLOT(addBooks()));
 
+    // View Profile Button
+    QObject::connect(v, SIGNAL(viewProfileButtonClicked()), p, SLOT(viewProfile()));
+
     //QObject::connect(v,SIGNAL(testSignal()), p, SLOT(testReceiver()));
 
     v->executeMainWindow();

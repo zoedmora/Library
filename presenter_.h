@@ -12,6 +12,7 @@
 #include "addusercontroller.h"
 #include "payfeescontroller.h"
 #include "addbookcontroller.h"
+#include "og_viewprofilecontroller.h"
 
 class Presenter_ : public QAbstractItemModel
 {
@@ -44,6 +45,7 @@ private:
     AddUserController* addUserController;
     PayFeesController* payFeesController;
     addbookcontroller* addBookController;
+    ViewProfileController* viewProfileController;
 
 public:
 //Functions
@@ -61,7 +63,7 @@ public slots:
     void addUser();
     void payFees();
     void addBooks();
-
+    void viewProfile();
 
 };
 

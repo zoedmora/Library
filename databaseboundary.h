@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <QList>
 #include "book.h"
+#include "og_user.h"
 #include <QSqlError>
 #include <QString>
 #include "frame.h"
@@ -41,6 +42,7 @@ public:
     void updateBookQuantity(QList<Frame*>*);
     void runDeleteQuery(QStringList*);
     QList<Book> runLastSelectQuery();
+    QStringList queryUserInfo(QString);
     QString getUserBalance(QString);
 
 public slots:
@@ -48,7 +50,7 @@ public slots:
     void addUserToDatabase(QStringList*);
     void Add_Book(QStringList*);
     void payUserFees(QString*);
-
+    void editUserDatabase(QStringList*);
 
 private:
 //Variables
