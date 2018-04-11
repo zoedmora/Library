@@ -36,6 +36,35 @@ void DatabaseBoundary::disconnect()
     db.close();
 }
 
+QStringList DatabaseBoundary::queryUserInfo(QString userName)
+{
+    qDebug() << "Querying User Information";
+    qDebug() << userName;
+    queryString = "SELECT * FROM LibraryDB.User WHERE userName = '" + userName + "'";
+    query.exec(queryString.toStdString().c_str());
+    QStringList userInfo;
+    qDebug() << query.lastQuery();
+
+    while (query.next())
+    {
+        userInfo << query.value(0).toString();
+        userInfo << query.value(1).toString();
+        userInfo << query.value(2).toString();
+        userInfo << query.value(3).toString();
+        userInfo << query.value(4).toString();
+        userInfo << query.value(5).toString();
+        userInfo << query.value(6).toString();
+        userInfo << query.value(7).toString();
+        userInfo << query.value(8).toString();
+        userInfo << query.value(9).toString();
+    }
+
+    if (query.numRowsAffected() > 0)
+        qDebug() << "User found.";
+
+    return userInfo;
+}
+
 QList<Book> DatabaseBoundary::runSelectQuery(QStringList criteria)
 {
     qDebug() << "Running Select Query";
@@ -114,6 +143,40 @@ void DatabaseBoundary::Add_Book(QStringList* bookInfo)
         qDebug() << "The user has not been added.";
     }
 
+}
+
+void DatabaseBoundary::editUserDatabase(QStringList *userInfo)
+{
+    qDebug() << "Reached DB Boundary for editing user.";
+
+    QString id = userInfo->at(0);
+    QString password = userInfo->at(1);
+    QString accountName = userInfo->at(2);
+    QString fName = userInfo->at(3);
+    QString lName = userInfo->at(4);
+    QString address = userInfo->at(5);
+    QString city = userInfo->at(6);
+    QString zip = userInfo->at(7);
+    QString email = userInfo->at(8);
+    QString phone = userInfo->at(9);
+
+    // Form query string
+    queryString = "UPDATE LibraryDB.User SET first_name = '" + fName + "', last_name = '" + lName + "', password = '" +
+            password + "', userName = '" + accountName + "', address = '" + address + "', city = '" + city + "', zip = '" +
+            zip + "', email = '" + email + "', phone = '" + phone + "', idUser = '" + id + "' WHERE idUser = '" + id + "';";
+
+    query = QSqlQuery();
+    query.exec(queryString.toStdString().c_str());
+
+    if(query.numRowsAffected() == 1)
+    {
+        qDebug() << "Letting user know that we have success.";
+    }
+
+    else
+    {
+        qDebug() << "The user has not been added.";
+    }
 }
 
 void DatabaseBoundary::addUserToDatabase(QStringList* userInfo)

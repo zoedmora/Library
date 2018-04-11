@@ -7,6 +7,7 @@
 #include "loginwindow.h"
 #include "addnewuser.h"
 #include "payfeeswindow.h"
+#include "edituser.h"
 
 class View_ : public QAbstractItemModel
 {
@@ -31,6 +32,7 @@ public:
     LogInWindow* getLogInWindow();//{return logInWindow;}
     addnewuser* getAddUserWindow(); //{return addUserWindow;}
     PayFeesWindow* getPayFeesWindow();//{return payFeesWindow;}
+    EditUser* getEditUserWindow();
     void hey(){qDebug() << "Its me!!!!!!!!!!!!!!!!!!!!!";}
 
 signals:
@@ -42,6 +44,7 @@ signals:
     void addUserButtonClicked();
     void payFeesButtonClicked();
     void addBookButtonClicked();
+    void viewProfileButtonClicked();
 
 
 private:
@@ -50,6 +53,7 @@ private:
     LogInWindow* logInWindow;
     addnewuser* addUserWindow;
     PayFeesWindow* payFeesWindow;
+    EditUser* editUserWindow;
 };
 
 #endif // VIEW__H

@@ -14,7 +14,7 @@ Presenter_::Presenter_(View_* v, Model_* m)
     addUserController = new AddUserController();
     payFeesController = new PayFeesController();
     addBookController = new addbookcontroller();
-
+    viewProfileController = new ViewProfileController();
 }
 
 /**
@@ -78,6 +78,13 @@ void Presenter_::addBooks()
     qDebug() << "Presenter can see that ADD button was clicked.";
     /* CREATE AND RUN THE CONTROLLER FOR ADDING BOOK */
     addBookController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary());
+}
+
+void Presenter_::viewProfile()
+{
+    qDebug() << "Presenter can see that EDIT button was clicked.";
+    /* CREATE AND RUN THE CONTROLLER FOR EDITING PROFILE */
+    viewProfileController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary(), model_p->getLogedInUserData());
 }
 
 
