@@ -20,10 +20,13 @@ public:
 
 signals:
     void okButtonWasClicked(QStringList*);
+    void scanWasDone(QStringList*);
 
 private:
     Ui::addbook *ui;
     QStringList* bookInfo;
+    QStringList* isbnInfo;
+
 };
 
 #endif // ADDBOOK_H

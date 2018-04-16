@@ -50,6 +50,7 @@ public slots:
     void Add_Book(QStringList*);
     void payUserFees(QString*);
     void editUserDatabase(QStringList*);
+    void addBookScanner(QStringList*);
 
 private:
 //Variables
