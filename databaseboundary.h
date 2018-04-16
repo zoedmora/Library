@@ -7,7 +7,6 @@
 #include <QDebug>
 #include <QList>
 #include "book.h"
-#include "og_user.h"
 #include <QSqlError>
 #include <QString>
 #include "frame.h"
