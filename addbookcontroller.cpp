@@ -13,8 +13,14 @@ void addbookcontroller::run(MainWindow* mw, DatabaseBoundary *dbb)
     addbook* add_book = new addbook();
     add_book->show();
 
+    //okbutton clicked
     QObject::connect(add_book, SIGNAL(okButtonWasClicked(QStringList*)), dbb, SLOT(Add_Book(QStringList*)));
+
+    //scan
+    QObject::connect(add_book , SIGNAL(scanWasDone(QStringList*)), dbb, SLOT(addBookScanner(QStringList*)));
+
 }
+
 
 QVariant addbookcontroller::headerData(int section, Qt::Orientation orientation, int role) const
 {

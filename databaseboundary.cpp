@@ -115,34 +115,89 @@ QList<Book> DatabaseBoundary::runSelectQuery(QStringList criteria)
 
 void DatabaseBoundary::Add_Book(QStringList* bookInfo)
 {
-    qDebug() << "Adding book?";
-    QString title = bookInfo->at(0);
-    QString author = bookInfo->at(1);
-    QString genre = bookInfo->at(2);
-    QString publisher = bookInfo->at(3);
-    QString ISBN = bookInfo->at(4);
-
+    qDebug() << "Checking if book is already inside?";
     /*QString*/ queryString = QString();
-    queryString = "INSERT INTO LibraryDB.Book(ISBN, Title, Author, Genre, Publisher)"
-                  "VALUES('" + ISBN + "','" + title + "','" + author + "','" + genre + "','" + publisher + "')";
-
-    /*QSqlQuery*/ query = QSqlQuery();
-
-    qDebug() << "Query is: " << queryString;
-
+    QString ISBN = bookInfo->at(4);
+    queryString = "SELECT * FROM LibraryDB.Book WHERE ISBN = '" + ISBN + "';";
     query.exec(queryString.toStdString().c_str());
 
-    /*check if it worked */
-    if(query.numRowsAffected() == 1)
+    if(query.numRowsAffected() > 0)
     {
+        queryString = "UPDATE LibraryDB.Book SET Quantity = Quantity + 1 WHERE ISBN = '" + ISBN + "';";
+
+        /*QSqlQuery*/ query = QSqlQuery();
+
+        qDebug() << "Query is: " << queryString;
+
+        query.exec(queryString.toStdString().c_str());
+
+        /*check if it worked */
+        if(query.numRowsAffected() == 1)
+        {
+            qDebug() << "Letting user know that we have success.";
+            bookInfo->append("*");
+        }
+
+        else
+        {
+            qDebug() << "The book has not been added.";
+        }
+    }
+
+    else {
+        qDebug() << "Adding book?";
+        QString title = bookInfo->at(0);
+        QString author = bookInfo->at(1);
+        QString genre = bookInfo->at(2);
+        QString publisher = bookInfo->at(3);
+        QString ISBN = bookInfo->at(4);
+
+        queryString = "INSERT INTO LibraryDB.Book(ISBN, Title, Author, Genre, Publisher)"
+                      "VALUES('" + ISBN + "','" + title + "','" + author + "','" + genre + "','" + publisher + "')";
+
+        /*QSqlQuery*/ query = QSqlQuery();
+
+        qDebug() << "Query is: " << queryString;
+
+        query.exec(queryString.toStdString().c_str());
+
+        /*check if it worked */
+        if(query.numRowsAffected() == 1)
+        {
+            qDebug() << "Letting user know that we have success.";
+            bookInfo->append("*");
+        }
+
+        else
+        {
+            qDebug() << "The book has not been added.";
+        }
+    }
+}
+
+void DatabaseBoundary::addBookScanner(QStringList* isbnInfo)
+{
+      qDebug() << "Adding book with scanner?";
+      QString isbn = isbnInfo->at(0);
+      queryString = "UPDATE LibraryDB.Book SET Quantity = Quantity + 1 WHERE ISBN = '" + isbn + "';";
+
+      /*QSqlQuery*/ query = QSqlQuery();
+
+      qDebug() << "Query is: " << queryString;
+
+      query.exec(queryString.toStdString().c_str());
+
+      /*check if it worked */
+      if(query.numRowsAffected() == 1)
+      {
         qDebug() << "Letting user know that we have success.";
-    }
+        isbnInfo->append("*");
+      }
 
-    else
-    {
-        qDebug() << "The user has not been added.";
-    }
-
+      else
+      {
+        qDebug() << "The book has not been added.";
+      }
 }
 
 void DatabaseBoundary::editUserDatabase(QStringList *userInfo)
@@ -362,20 +417,6 @@ QList<Book> DatabaseBoundary::runLastSelectQuery()
     /* RETURN LIST */
         return listOfBooks;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 QVariant DatabaseBoundary::headerData(int section, Qt::Orientation orientation, int role) const
 {
