@@ -221,10 +221,10 @@
    <widget class="QLabel" name="Failed">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>30</y>
-      <width>191</width>
-      <height>16</height>
+      <x>270</x>
+      <y>20</y>
+      <width>211</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -234,7 +234,7 @@
    <widget class="QLabel" name="Success">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>270</x>
       <y>30</y>
       <width>191</width>
       <height>16</height>

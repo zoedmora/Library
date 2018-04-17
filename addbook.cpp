@@ -13,6 +13,7 @@ addbook::addbook(QWidget *parent) :
     ui->Failed->setVisible(false);
     ui->Success_2->setVisible(false);
     ui->Failed_2->setVisible(false);
+    ui->ISBN_Input->focusWidget();
 
 //    QObject::connect(ui->ISBN_Input, SIGNAL(textChanged(QString)), this, SIGNAL(scanWasDone(QString)));
 }
@@ -81,7 +82,7 @@ void addbook::accept()
          //fail
          else
          {
-             ui->Failed->setText("Failed for ISBN: " + isbnInfo->at(0));
+             ui->Failed->setText("Failed for ISBN: " + isbnInfo->at(0) + "\nAdd manually first.");
              ui->Failed->setVisible(true);
              ui->Success->setVisible(false);
              ui->Success_2->setVisible(false);
@@ -90,9 +91,11 @@ void addbook::accept()
      }
      else
      {
-         qDebug() << "Missing fields/Wrong info.";
-         ui->Failed->setVisible(true);
+         ui->Failed_2->setText("Missing fields/Wrong info. Try again.");
+         ui->Failed_2->setVisible(true);
          ui->Success->setVisible(false);
+         ui->Failed->setVisible(false);
+         ui->Success_2->setVisible(false);
      }
 
 
