@@ -5,6 +5,7 @@
 #include "mainwindow.h"
 #include "databaseboundary.h"
 #include "payfeeswindow.h"
+#include <QSqlTableModel>
 
 class PayFeesController : public QAbstractItemModel
 {
@@ -28,6 +29,7 @@ public:
 
 //Functions
     void run(MainWindow*, DatabaseBoundary*, LogedInUserData*);
+
 
 private:
 };

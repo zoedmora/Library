@@ -6,22 +6,34 @@ PayFeesController::PayFeesController(QObject *parent)
 }
 
 void PayFeesController::run(MainWindow* mw, DatabaseBoundary* dbb, LogedInUserData* liud)
-{
+{   
     qDebug() << "Running Pay Fees Controller";
 
+    //Window To Pay The Fees
     PayFeesWindow* pfw = new PayFeesWindow();
 
-    QObject::connect(pfw, SIGNAL(OKButtonWasClicked(QString*)), dbb, SLOT(payUserFees(QString*)));
-
+    //user Id of who ever is logged in
     QString currentUser = liud->getLogedInUserName();
 
     //qDebug() << "Person logged in is: " << currentUser;
 
-    QString balance = dbb->getUserBalance(currentUser);
+    //balance user owns (pulling from user table fee column)
+    double balance = dbb->getUserBalance(currentUser);
 
-    //qDebug() << "Balance is: $" << balance;
+    //calculated balance SUM from userfees table
+    double calcBalance = dbb->getBalanceFromUserFees(currentUser);
 
-    pfw->setBalance(balance);
+
+    //Tell Window How Much The Balance Is
+    pfw->updateBalance(balance);
+    pfw->currentUserLogedIn(liud->getLogedInUserName());
+
+    //Get db from dbb
+    pfw->dbConnection(dbb->getDb());
+
+    //Updating the database Fee column in the user
+    QObject::connect(pfw, SIGNAL(OKButtonWasClicked(double, QString)), dbb, SLOT(updateUserFees(double, QString)));
+    QObject::connect(pfw, SIGNAL(paymentButtonClicked(double,QString)), dbb, SLOT(updatePayHistory(double, QString)));
 
     pfw->exec();
 

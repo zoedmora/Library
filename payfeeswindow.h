@@ -5,6 +5,10 @@
 #include <QDebug>
 #include <QStringList>
 #include <logedinuserdata.h>
+#include <QTableView>
+#include <QString>
+#include <QSqlDatabase>
+#include <QSqlTableModel>
 
 namespace Ui {
 class PayFeesWindow;
@@ -19,14 +23,24 @@ public:
     ~PayFeesWindow();
     void accept();
     void reject();
-    void setBalance(QString);
+    void currentUserLogedIn(QString user){logedInUser = user;}
+    void dbConnection(QSqlDatabase database){db = database;}
+    QSqlDatabase getDb(){return db;}
+
 
 signals:
-    void OKButtonWasClicked(QString*);
+    void OKButtonWasClicked(double, QString);
+    void paymentButtonClicked(double, QString);
+
+
+public slots:
+    void updateBalance(double);
 
 private:
     Ui::PayFeesWindow *ui;
-    QString* paymentAmount;
+    double balance;
+    QString logedInUser;
+    QSqlDatabase db;
 
 };
 
