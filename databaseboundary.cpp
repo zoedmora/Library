@@ -96,9 +96,10 @@ QList<Book> DatabaseBoundary::runSelectQuery(QStringList criteria)
         QString Title = query.value(1).toString();
         QString Author = query.value(2).toString();
         QString Quantity = query.value(3).toString();
-        /*needs more*/ //need to add the publisher and the genre and stuff
+        QString Genre = query.value(4).toString();
+        QString Publisher = query.value(5).toString();
 
-        listOfBooks.append(Book(Id, Title, Author, Quantity));
+        listOfBooks.append(Book(Id, Title, Author, Quantity, Publisher, Genre));
         qDebug() << Id << "*" << Title << "*" << Author;
     }
     qDebug() << "Last query: " << query.lastQuery();

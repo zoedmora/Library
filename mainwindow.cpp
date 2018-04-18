@@ -17,11 +17,11 @@ MainWindow::MainWindow(QWidget *parent) :
     //QObject::connect(win, SIGNAL(logedIn()), this, SLOT(changeLogInLabel()));
 
     //Fill Main Window background with an image
-//    QPixmap bkgnd("/Users/zoedmora/Qt/Projects/SeniorProject/books.jpg");
-//    bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPixmap bkgnd("/Users/zoedmora/Qt/Projects/SeniorProject/books.jpg");
+    bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
-//    palette.setBrush(QPalette::Background, bkgnd);
-//    this->setPalette(palette);
+    palette.setBrush(QPalette::Background, bkgnd);
+    this->setPalette(palette);
 
     //Configure white frame containing the search bar
     palette.setBrush(QPalette::Background, Qt::white);
@@ -129,6 +129,10 @@ void MainWindow::showResultsOnScreen(QList<Book> list)
             temp->findChild<QLabel*>("titleValue")->setText(list.at(i).title);              //temp->book->title = list.at(i).title; //((QLabel*) temp->children().at(0))->setText(list.at(i).tittle);
             temp->findChild<QLabel*>("authorValue")->setText(list.at(i).author);            //temp->book->author = list.at(i).author;   //((QLabel*) temp->children().at(1))->setText(list.at(i).author);
             temp->findChild<QLineEdit*>("quantityLineEdit")->setText(list.at(i).quantity);  //temp->book->quantity = list.at(i).quantity;
+            temp->findChild<QLabel*>("genreValue")->setText(list.at(i).genre);
+            temp->findChild<QLabel*>("publisherValue")->setText(list.at(i).publisher);
+            qDebug() << "Genre: " << list.at(i).genre << " and publisher: " << list.at(i).publisher;
+
             temp->setBook(list.at(i).ISBN, list.at(i).title, list.at(i).author, list.at(i).quantity);
 
             //add each frame to layout
