@@ -13,7 +13,7 @@ addbook::addbook(QWidget *parent) :
     ui->Failed->setVisible(false);
     ui->Success_2->setVisible(false);
     ui->Failed_2->setVisible(false);
-    ui->ISBN_Input->focusWidget();
+    ui->ISBN_Input->setFocus();
 
 //    QObject::connect(ui->ISBN_Input, SIGNAL(textChanged(QString)), this, SIGNAL(scanWasDone(QString)));
 }
