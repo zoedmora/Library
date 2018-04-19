@@ -12,7 +12,7 @@
 #include "addusercontroller.h"
 #include "payfeescontroller.h"
 #include "addbookcontroller.h"
-#include "og_viewprofilecontroller.h"
+#include "viewprofilecontroller.h"
 
 class Presenter_ : public QAbstractItemModel
 {

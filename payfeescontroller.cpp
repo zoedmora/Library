@@ -26,11 +26,8 @@ void PayFeesController::run(MainWindow* mw, DatabaseBoundary* dbb, LogedInUserDa
 
     //Tell Window How Much The Balance Is
     pfw->updateBalance(balance);
-<<<<<<< Updated upstream
-    pfw->currentUserLogedIn(liud->getLogedInUserName());
-=======
+
     pfw->currentUserLogedIn(currentUser);
->>>>>>> Stashed changes
 
     //Get db from dbb
     pfw->dbConnection(dbb->getDb());
