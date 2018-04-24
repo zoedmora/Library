@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>661</width>
-    <height>526</height>
+    <width>713</width>
+    <height>554</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -73,6 +73,13 @@
         <widget class="QPushButton" name="addUserButton">
          <property name="text">
           <string>Add User</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="deleteUserButton">
+         <property name="text">
+          <string>Delete User</string>
          </property>
         </widget>
        </item>
@@ -282,7 +289,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>661</width>
+     <width>713</width>
      <height>22</height>
     </rect>
    </property>
