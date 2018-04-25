@@ -2,7 +2,7 @@
 #include "ui_payfeeswindow.h"
 #include "mainwindow.h"
 
-PayFeesWindow::PayFeesWindow(QWidget *parent) :
+PayFeesWindow::PayFeesWindow(QString userName, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::PayFeesWindow)
 {
@@ -11,14 +11,17 @@ PayFeesWindow::PayFeesWindow(QWidget *parent) :
     //Show payment history table on open
     QSqlTableModel *model = new QSqlTableModel(0, db);
     model->setTable("PayHistory");
+    model->setFilter("userName like '"+ userName +"'");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     model->select();
+    model->setHeaderData(0, Qt::Horizontal, tr("Paid Amount"));
     model->removeColumns(0,2);
     ui->tableView->setModel(model);
 
     //Show book charges table on open
     QSqlTableModel *feeModel = new QSqlTableModel(0, db);
     feeModel->setTable("UserFees");
+    feeModel->setFilter("userName like '"+ userName +"'");
     feeModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
     feeModel->select();
     feeModel->removeColumns(0,3);
@@ -39,21 +42,37 @@ void PayFeesWindow::accept()
 
     double paymentAmount = ui->paymentLineEdit->text().toDouble();
 
+    QString date = QDate::currentDate().toString("M/d/yy");
+
     //Updating balance variable
-    balance -= paymentAmount;
+    if(balance - paymentAmount >= 0 && paymentAmount != 0){
+        balance -= paymentAmount;
+        //Success message box
+        QMessageBox messageBox;
+        messageBox.setText("Payment received!  ");
+        messageBox.exec();
 
-    //Updating Balance Label
-    ui->balanceLabel->setText("Balance is : $" + QString::number(balance));
+        //Updating Balance Label
+        ui->balanceLabel->setText("Balance is : $" + QString::number(balance));
 
-    //Signal for updating DB
-    emit OKButtonWasClicked(balance, logedInUser);
-    emit paymentButtonClicked(paymentAmount, logedInUser);
+        //Signal for updating DB
+        emit OKButtonWasClicked(balance, logedInUser);
+        emit paymentButtonClicked(paymentAmount, logedInUser, date);
+    }
+    else {
+        //Error message box
+        QMessageBox messageBox;
+        messageBox.critical(0,"Error","Invalid input!");
+        messageBox.setFixedSize(500,200);
+    }
 
     //Update Payment history table on click
     QSqlTableModel *model = new QSqlTableModel(0, db);
     model->setTable("PayHistory");
+    model->setFilter("userName like '"+ logedInUser +"'");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     model->select();
+    model->setHeaderData(0, Qt::Horizontal, tr("Paid Amount"));
     model->removeColumns(0,2);
     ui->tableView->setModel(model);
 
@@ -65,10 +84,10 @@ void PayFeesWindow::reject()
     QDialog::reject();
 }
 
-void PayFeesWindow::updateBalance(double amount)
+void PayFeesWindow::updateBalance(double amount, double payment)
 {
-    balance = amount;
-    ui->balanceLabel->setText("Balance is: $" + QString::number(balance) );
+    balance = amount - payment;
+    ui->balanceLabel->setText("Balance is: $" + QString::number(balance));
 }
 
 

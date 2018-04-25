@@ -9,32 +9,28 @@ void PayFeesController::run(MainWindow* mw, DatabaseBoundary* dbb, LogedInUserDa
 {   
     qDebug() << "Running Pay Fees Controller";
 
-    //Window To Pay The Fees
-    PayFeesWindow* pfw = new PayFeesWindow();
-
-    //user Id of who ever is logged in
+    //User ID of who ever is logged in
     QString currentUser = liud->getLogedInUserName();
 
-    //qDebug() << "Person logged in is: " << currentUser;
+    //Window To Pay The Fees
+    PayFeesWindow* pfw = new PayFeesWindow(currentUser);
 
-    //balance user owns (pulling from user table fee column)
-    double balance = dbb->getUserBalance(currentUser);
-
-    //calculated balance SUM from userfees table
-    double calcBalance = dbb->getBalanceFromUserFees(currentUser);
-
-
-    //Tell Window How Much The Balance Is
-    pfw->updateBalance(balance);
-
+    //Send current user to window
     pfw->currentUserLogedIn(currentUser);
+
+    //Getting balance and total payment of current user
+    double balance = dbb->getUserBalance(currentUser);
+    double totalPayment = dbb->getTotalPayment(currentUser);
+
+    //Send balance and total payment to window
+    pfw->updateBalance(balance, totalPayment);
 
     //Get db from dbb
     pfw->dbConnection(dbb->getDb());
 
     //Updating the database Fee column in the user
     QObject::connect(pfw, SIGNAL(OKButtonWasClicked(double, QString)), dbb, SLOT(updateUserFees(double, QString)));
-    QObject::connect(pfw, SIGNAL(paymentButtonClicked(double,QString)), dbb, SLOT(updatePayHistory(double, QString)));
+    QObject::connect(pfw, SIGNAL(paymentButtonClicked(double,QString, QString)), dbb, SLOT(updatePayHistory(double, QString, QString)));
 
     pfw->exec();
 

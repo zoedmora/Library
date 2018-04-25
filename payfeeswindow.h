@@ -9,6 +9,8 @@
 #include <QString>
 #include <QSqlDatabase>
 #include <QSqlTableModel>
+#include <QMessageBox>
+#include <QDateTime>
 
 namespace Ui {
 class PayFeesWindow;
@@ -19,7 +21,7 @@ class PayFeesWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit PayFeesWindow(QWidget *parent = 0);
+    explicit PayFeesWindow(QString userName, QWidget *parent = 0);
     ~PayFeesWindow();
     void accept();
     void reject();
@@ -30,11 +32,11 @@ public:
 
 signals:
     void OKButtonWasClicked(double, QString);
-    void paymentButtonClicked(double, QString);
+    void paymentButtonClicked(double, QString, QString);
 
 
 public slots:
-    void updateBalance(double);
+    void updateBalance(double, double);
 
 private:
     Ui::PayFeesWindow *ui;

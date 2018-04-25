@@ -11,7 +11,6 @@
 #include <QString>
 #include "frame.h"
 #include "logedinuserdata.h"
-#include <QMessageBox>
 
 
 class DatabaseBoundary : public QAbstractItemModel
@@ -45,7 +44,7 @@ public:
     QStringList queryUserInfo(QString);
     double getUserBalance(QString);
     QSqlDatabase getDb(){return db;}
-    double getBalanceFromUserFees(QString);
+    double getTotalPayment(QString);
 
 signals:
     void sendBalanceToPayWindow(QString);
@@ -57,7 +56,7 @@ public slots:
     void updateUserFees(double, QString);
     void editUserDatabase(QStringList*);
     void addBookScanner(QStringList*);
-    void updatePayHistory(double, QString);
+    void updatePayHistory(double, QString, QString);
 
 private:
 //Variables

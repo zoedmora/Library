@@ -270,34 +270,21 @@ void DatabaseBoundary::addUserToDatabase(QStringList* userInfo)
     }
 }
 
-void DatabaseBoundary::updateUserFees(double balance, QString userName)
-{
-     //Updating balance to db
-     qDebug() << "Reached DB Boundary for paying fees amounting to: " << balance;
-
-     queryString = "UPDATE LibraryDB.User SET fee= '" + QString::number(balance) + "' WHERE userName = '" + userName + "'";
-     query = QSqlQuery();
-     query.exec(queryString.toStdString().c_str());
-
-     if(query.numRowsAffected() == 1)
-     {
-         //Success message box
-         QMessageBox messageBox;
-         messageBox.setText("Payment received!  ");
-         messageBox.exec();
-     }
-
-     else
-     {
-         //Error message box
-         QMessageBox messageBox;
-         messageBox.critical(0,"Error","Invalid input!");
-         messageBox.setFixedSize(500,200);
-     }
-}
-
 double DatabaseBoundary::getUserBalance(QString currentUser)
 {
+    //Getting balance SUM from UserFess Table
+    queryString = "SELECT SUM(Amount) FROM UserFees WHERE userName LIKE '" + currentUser + "'";
+    query = QSqlQuery();
+    query.exec(queryString.toStdString().c_str());
+    query.next();
+    double balance = query.value(0).toDouble();
+
+
+    queryString = "UPDATE LibraryDB.User SET fee= '" + QString::number(balance) + "' WHERE userName = '" + currentUser + "'";
+    query = QSqlQuery();
+    query.exec(queryString.toStdString().c_str());
+
+
    //Getting balance from User table fees column
    queryString = "SELECT fee FROM LibraryDB.User WHERE userName = '" + currentUser + "'";
    query = QSqlQuery();
@@ -311,25 +298,33 @@ double DatabaseBoundary::getUserBalance(QString currentUser)
    return fee;
 }
 
-void DatabaseBoundary::updatePayHistory(double paidAmount, QString userName)
+void DatabaseBoundary::updateUserFees(double balance, QString userName)
 {
-    //Inserting payments into PayHistory Table
-    queryString = "INSERT INTO LibraryDB.PayHistory (userName, paidAmount) VALUES ('" + userName + "', '" + QString::number(paidAmount) + "')";
-    query = QSqlQuery();
-    query.exec(queryString.toStdString().c_str());
+     //Updating balance to db
+     qDebug() << "Reached DB Boundary for paying fees amounting to: " << balance;
+
+     queryString = "UPDATE LibraryDB.User SET fee= '" + QString::number(balance) + "' WHERE userName = '" + userName + "'";
+     query = QSqlQuery();
+     query.exec(queryString.toStdString().c_str());
 }
 
-double DatabaseBoundary::getBalanceFromUserFees(QString userName)
+double DatabaseBoundary::getTotalPayment(QString currentUser)
 {
-    //Getting balance SUM from UserFess Table
-    queryString = "SELECT SUM(Amount) FROM UserFees WHERE userName LIKE '" + userName + "'";
+    //Getting total payment amount of current user
+    queryString = "SELECT SUM(paidAmount) FROM PayHistory WHERE userName LIKE '" + currentUser + "'";
     query = QSqlQuery();
     query.exec(queryString.toStdString().c_str());
     query.next();
+    double totalPayment = query.value(0).toDouble();
+    return totalPayment;
+}
 
-    double balance = query.value(0).toDouble();
-
-    return balance;
+void DatabaseBoundary::updatePayHistory(double paidAmount, QString userName, QString date)
+{
+    //Inserting payments into PayHistory Table
+    queryString = "INSERT INTO LibraryDB.PayHistory (userName, paidAmount, date) VALUES ('" + userName + "', '" + QString::number(paidAmount) + "', '" + date + "')";
+    query = QSqlQuery();
+    query.exec(queryString.toStdString().c_str());
 }
 
 void DatabaseBoundary::isUserAndPwdInDatabase(QStringList* nameAndPwd)
