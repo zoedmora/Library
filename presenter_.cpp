@@ -15,8 +15,7 @@ Presenter_::Presenter_(View_* v, Model_* m)
     payFeesController = new PayFeesController();
     addBookController = new addbookcontroller();
     viewProfileController = new ViewProfileController();
-    viewTransactionsController = new ViewTransactionsController();
-    searchTransactionsController = new SearchTransactionsController();
+    deleteUserController = new DeleteUserController();
 }
 
 /**
@@ -89,21 +88,12 @@ void Presenter_::viewProfile()
     viewProfileController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary(), model_p->getLogedInUserData());
 }
 
-void Presenter_::viewTransactions()
+void Presenter_::deleteUser()
 {
-    qDebug() << "Presenter can see that View Transactions button was clicked.";
+    qDebug() << "Presenter can see that DELETE USER button was clicked.";
     /* CREATE AND RUN THE CONTROLLER FOR EDITING PROFILE */
-    viewTransactionsController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary(), model_p->getLogedInUserData());
+    deleteUserController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary());
 }
-
-void Presenter_::searchTransactions()
-{
-    qDebug() << "Presenter can see that Search Transactions button was clicked.";
-    /* CREATE AND RUN THE CONTROLLER FOR EDITING PROFILE */
-    searchTransactionsController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary());
-}
-
-
 
 
 
