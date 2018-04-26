@@ -48,6 +48,8 @@ signals:
     void addBookButtonClicked();
     void viewProfileButtonClicked();
     void deleteUserButtonClicked();
+    void viewTransactionsButtonClicked();
+    void searchTransactionsButtonClicked();
 
 
 private:

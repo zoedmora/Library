@@ -14,6 +14,8 @@
 #include "addbookcontroller.h"
 #include "viewprofilecontroller.h"
 #include "deleteusercontroller.h"
+#include "viewtransactionscontroller.h"
+#include "searchtransactionscontroller.h"
 
 class Presenter_ : public QAbstractItemModel
 {
@@ -47,6 +49,8 @@ private:
     PayFeesController* payFeesController;
     addbookcontroller* addBookController;
     ViewProfileController* viewProfileController;
+    ViewTransactionsController* viewTransactionsController;
+    SearchTransactionsController* searchTransactionsController;
     DeleteUserController* deleteUserController;
 
 public:
@@ -66,6 +70,8 @@ public slots:
     void payFees();
     void addBooks();
     void viewProfile();
+    void viewTransactions();
+    void searchTransactions();
     void deleteUser();
 
 };

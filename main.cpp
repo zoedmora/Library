@@ -39,6 +39,12 @@ int main(int argc, char *argv[])
     // Delete User Button
     QObject::connect(v, SIGNAL(deleteUserButtonClicked()), p, SLOT(deleteUser()));
 
+    // View Transactions Button
+    QObject::connect(v, SIGNAL(viewTransactionsButtonClicked()), p, SLOT(viewTransactions()));
+
+    // Search Transactions Button
+    QObject::connect(v, SIGNAL(searchTransactionsButtonClicked()), p, SLOT(searchTransactions()));
+
     //QObject::connect(v,SIGNAL(testSignal()), p, SLOT(testReceiver()));
 
     v->executeMainWindow();

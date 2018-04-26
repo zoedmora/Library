@@ -58,6 +58,7 @@ public slots:
     void editUserDatabase(QStringList*);
     void addBookScanner(QStringList*);
     void updatePayHistory(double, QString, QString);
+    void searchUserName(int);
     void deleteUserInDatabase(QStringList*);
     void searchUserDatabase(QStringList*);
 
@@ -67,6 +68,10 @@ private:
     QSqlQuery query;
     QString queryString;//query string
     QString latestSearchQuery;
+
+signals:
+    void SendUserNameToWindow(QString);
+
 
 };
 

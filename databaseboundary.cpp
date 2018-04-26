@@ -285,6 +285,17 @@ void DatabaseBoundary::deleteUserInDatabase(QStringList *userID)
     }
 }
 
+void DatabaseBoundary::searchUserName(int userID)
+{
+    //Getting username with their id and emitting a signal back to searchTransactionsWindow
+    queryString = "SELECT userName from User WHERE idUser like '" + QString::number(userID) + "'";
+    query = QSqlQuery();
+    query.exec(queryString.toStdString().c_str());
+    query.next();
+    QString userName = query.value(0).toString();
+    emit SendUserNameToWindow(userName);
+}
+
 void DatabaseBoundary::addUserToDatabase(QStringList* userInfo)
 {
     qDebug() << "Reached DB Boundary for adding user.";
