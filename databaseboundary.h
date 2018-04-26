@@ -46,9 +46,6 @@ public:
     QSqlDatabase getDb(){return db;}
     double getTotalPayment(QString);
 
-signals:
-    void sendBalanceToPayWindow(QString);
-
 public slots:
     void isUserAndPwdInDatabase(QStringList*);
     void addUserToDatabase(QStringList*);
@@ -57,6 +54,7 @@ public slots:
     void editUserDatabase(QStringList*);
     void addBookScanner(QStringList*);
     void updatePayHistory(double, QString, QString);
+    void searchUserName(int);
 
 private:
 //Variables
@@ -64,6 +62,9 @@ private:
     QSqlQuery query;
     QString queryString;//query string
     QString latestSearchQuery;
+
+signals:
+    void SendUserNameToWindow(QString);
 
 };
 

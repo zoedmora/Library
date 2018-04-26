@@ -25,9 +25,6 @@ void PayFeesController::run(MainWindow* mw, DatabaseBoundary* dbb, LogedInUserDa
     //Send balance and total payment to window
     pfw->updateBalance(balance, totalPayment);
 
-    //Get db from dbb
-    pfw->dbConnection(dbb->getDb());
-
     //Updating the database Fee column in the user
     QObject::connect(pfw, SIGNAL(OKButtonWasClicked(double, QString)), dbb, SLOT(updateUserFees(double, QString)));
     QObject::connect(pfw, SIGNAL(paymentButtonClicked(double,QString, QString)), dbb, SLOT(updatePayHistory(double, QString, QString)));

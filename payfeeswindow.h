@@ -27,7 +27,6 @@ public:
     void reject();
     void currentUserLogedIn(QString user){logedInUser = user;}
     void dbConnection(QSqlDatabase database){db = database;}
-    QSqlDatabase getDb(){return db;}
 
 
 signals:

@@ -36,6 +36,12 @@ int main(int argc, char *argv[])
     // View Profile Button
     QObject::connect(v, SIGNAL(viewProfileButtonClicked()), p, SLOT(viewProfile()));
 
+    // View Transactions Button
+    QObject::connect(v, SIGNAL(viewTransactionsButtonClicked()), p, SLOT(viewTransactions()));
+
+    // Search Transactions Button
+    QObject::connect(v, SIGNAL(searchTransactionsButtonClicked()), p, SLOT(searchTransactions()));
+
     //QObject::connect(v,SIGNAL(testSignal()), p, SLOT(testReceiver()));
 
     v->executeMainWindow();

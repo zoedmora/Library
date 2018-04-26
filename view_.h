@@ -45,6 +45,8 @@ signals:
     void payFeesButtonClicked();
     void addBookButtonClicked();
     void viewProfileButtonClicked();
+    void viewTransactionsButtonClicked();
+    void searchTransactionsButtonClicked();
 
 
 private:

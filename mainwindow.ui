@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>713</width>
+    <width>780</width>
     <height>554</height>
    </rect>
   </property>
@@ -94,6 +94,20 @@
         <widget class="QPushButton" name="viewProfileButton">
          <property name="text">
           <string>View Profile</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="viewTransactionsButton">
+         <property name="text">
+          <string>View Transactions</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="searchTransactionsButton">
+         <property name="text">
+          <string>Search Transactions</string>
          </property>
         </widget>
        </item>
@@ -289,8 +303,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>713</width>
-     <height>22</height>
+     <width>780</width>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

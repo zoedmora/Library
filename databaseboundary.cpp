@@ -327,6 +327,18 @@ void DatabaseBoundary::updatePayHistory(double paidAmount, QString userName, QSt
     query.exec(queryString.toStdString().c_str());
 }
 
+void DatabaseBoundary::searchUserName(int userID)
+{
+    //Getting username with their id and emitting a signal back to searchTransactionsWindow
+    queryString = "SELECT userName from User WHERE idUser like '" + QString::number(userID) + "'";
+    query = QSqlQuery();
+    query.exec(queryString.toStdString().c_str());
+    query.next();
+    QString userName = query.value(0).toString();
+    emit SendUserNameToWindow(userName);
+}
+
+
 void DatabaseBoundary::isUserAndPwdInDatabase(QStringList* nameAndPwd)
 {
     qDebug() << "About to see if the following are in the database: " << nameAndPwd->at(0) << nameAndPwd->at(1);
