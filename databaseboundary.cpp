@@ -235,6 +235,56 @@ void DatabaseBoundary::editUserDatabase(QStringList *userInfo)
     }
 }
 
+void DatabaseBoundary::searchUserDatabase(QStringList* userID)
+{
+    qDebug() << "Reach DB Boundary for searching users via ID.";
+
+    QString id = userID->at(0);
+
+    queryString = "SELECT * FROM LibraryDB.User WHERE idUser = '" + id + "'";
+    query.exec(queryString.toStdString().c_str());
+    qDebug() << query.lastQuery();
+
+    while (query.next())
+    {
+        userID->append(query.value(0).toString());
+        userID->append(query.value(1).toString());
+        userID->append(query.value(2).toString());
+        userID->append(query.value(3).toString());
+        userID->append(query.value(4).toString());
+        userID->append(query.value(5).toString());
+        userID->append(query.value(6).toString());
+        userID->append(query.value(7).toString());
+        userID->append(query.value(8).toString());
+        userID->append(query.value(9).toString());
+    }
+
+    if (query.numRowsAffected() > 0)
+        qDebug() << "User found.";
+
+}
+
+void DatabaseBoundary::deleteUserInDatabase(QStringList *userID)
+{
+    qDebug() << "Deleting User in Database";
+
+    QString id = userID->at(0);
+
+    queryString = "DELETE FROM LibraryDB.User WHERE idUser = " + id + ";";
+    query = QSqlQuery();
+    query.exec(queryString.toStdString().c_str());
+
+    if(query.numRowsAffected() == 1)
+    {
+        qDebug() << "Letting user know that we have success.";
+    }
+
+    else
+    {
+        qDebug() << "The user has not been added.";
+    }
+}
+
 void DatabaseBoundary::addUserToDatabase(QStringList* userInfo)
 {
     qDebug() << "Reached DB Boundary for adding user.";
@@ -326,18 +376,6 @@ void DatabaseBoundary::updatePayHistory(double paidAmount, QString userName, QSt
     query = QSqlQuery();
     query.exec(queryString.toStdString().c_str());
 }
-
-void DatabaseBoundary::searchUserName(int userID)
-{
-    //Getting username with their id and emitting a signal back to searchTransactionsWindow
-    queryString = "SELECT userName from User WHERE idUser like '" + QString::number(userID) + "'";
-    query = QSqlQuery();
-    query.exec(queryString.toStdString().c_str());
-    query.next();
-    QString userName = query.value(0).toString();
-    emit SendUserNameToWindow(userName);
-}
-
 
 void DatabaseBoundary::isUserAndPwdInDatabase(QStringList* nameAndPwd)
 {

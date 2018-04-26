@@ -7,6 +7,7 @@ View_::View_(QObject *parent)
     mainWindow = new MainWindow;
     logInWindow = new LogInWindow;
     addUserWindow = new addnewuser;
+    deleteUserWindow = new DeleteUser;
     this->setObjectName("Yo Mamma----------------------------------");
 
     QObject::connect(mainWindow->findChild<QPushButton*>("searchButton"), SIGNAL(clicked()), this, SIGNAL(searchButtonClicked()));//Search Button
@@ -17,8 +18,8 @@ View_::View_(QObject *parent)
     QObject::connect(mainWindow->findChild<QPushButton*>("payFeesButton"), SIGNAL(clicked()), this, SIGNAL(payFeesButtonClicked()));//Pay Fees Button
     QObject::connect(mainWindow->findChild<QPushButton*>("addBookButton"), SIGNAL(clicked()), this, SIGNAL(addBookButtonClicked())); //Add book
     QObject::connect(mainWindow->findChild<QPushButton*>("viewProfileButton"), SIGNAL(clicked()), this, SIGNAL(viewProfileButtonClicked())); //View Profile Button
-    QObject::connect(mainWindow->findChild<QPushButton*>("viewTransactionsButton"), SIGNAL(clicked()), this, SIGNAL(viewTransactionsButtonClicked())); // View Transactions Button
-    QObject::connect(mainWindow->findChild<QPushButton*>("searchTransactionsButton"), SIGNAL(clicked()), this, SIGNAL(searchTransactionsButtonClicked())); // Search Transactions Button
+    QObject::connect(mainWindow->findChild<QPushButton*>("deleteUserButton"), SIGNAL(clicked()), this, SIGNAL(deleteUserButtonClicked())); //View Profile Button
+
 }
 
 
@@ -36,6 +37,8 @@ addnewuser* View_::getAddUserWindow(){return addUserWindow;}
 PayFeesWindow* View_::getPayFeesWindow(){return payFeesWindow;}
 
 EditUser* View_::getEditUserWindow(){return editUserWindow;}
+
+DeleteUser* View_::getDeleteUserWindow(){return deleteUserWindow;}
 
 
 
