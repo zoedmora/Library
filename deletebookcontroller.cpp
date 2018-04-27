@@ -22,6 +22,7 @@ void DeleteBookController::run(MainWindow* mw, DatabaseBoundary* dbb)
 
 
         /*  CALL THE DELETE QUERY  */
+        //this deletes it from the database only
         dbb->runDeleteQuery(booksToDelete);
 
 

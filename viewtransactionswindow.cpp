@@ -42,7 +42,8 @@ void viewtransactionswindow::accept()
     int rows = model->rowCount();
     int columns = model->columnCount();
 
-    for (int i = 0; i < rows; i++) {
+    for (int i = 0; i < rows; i++)
+    {
         for (int j = 0; j < columns; j++) {
 
                 textData += model->data(model->index(i,j)).toString();
@@ -53,7 +54,7 @@ void viewtransactionswindow::accept()
 
     // [Save to file] (header file <QFile> needed)
     // .csv
-    QFile csvFile(logedInUser + "Transactions.csv");
+    QFile csvFile("/Users/zoedmora/Qt/Projects/SeniorProject/" + logedInUser + "Transactions.csv");
     if(csvFile.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
 
         QTextStream out(&csvFile);
@@ -63,7 +64,7 @@ void viewtransactionswindow::accept()
     }
 
     // .txt
-    QFile txtFile(logedInUser + "Transactions.txt");
+    QFile txtFile("/Users/zoedmora/Qt/Projects/SeniorProject/" + logedInUser + "Transactions.txt");
     if(txtFile.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
 
         QTextStream out(&txtFile);

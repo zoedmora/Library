@@ -76,7 +76,7 @@ QList<Book> DatabaseBoundary::runSelectQuery(QStringList criteria)
     QString fieldOfSearch = criteria[1];
 
     //forming the query string
-    queryString = "SELECT * FROM LibraryDB.Book WHERE " + fieldOfSearch + "='" + name + "'";
+    queryString = "SELECT * FROM LibraryDB.Book WHERE " + fieldOfSearch + " LIKE '%" + name + "%'";
 
     //saving this query so that we can keep track of the last search query executed
     latestSearchQuery = queryString;
@@ -438,7 +438,7 @@ void DatabaseBoundary::updateBookQuantity(QList<Frame*>* books)
 
         //forming the query string
         queryString = QString();
-        queryString = "UPDATE LibraryDB.Book SET Quantity = '" + quantity + "' WHERE idBook = '" + bookId + "'";
+        queryString = "UPDATE LibraryDB.Book SET Quantity = '" + quantity + "' WHERE ISBN = '" + bookId + "'";
         //UPDATE `LibraryDB`.`Book` SET `Quantity`='2' WHERE `idBook`='0';
 
         qDebug() << "Printing the query string: " << queryString;
@@ -461,14 +461,16 @@ void DatabaseBoundary::runDeleteQuery(QStringList* criteria)
     QString queryString;
 
     //forming query string
-    queryString = "DELETE FROM LibraryDB.Book WHERE idBook = ";
+    queryString = "DELETE FROM LibraryDB.Book WHERE ISBN = ";
 
     //loop through all the books and delete them
     for(int i = 0; i < criteria->size(); i++)
     {
         //queryString += "'" + criteria->at(i) + "'";
+        qDebug() << "Query is: " << queryString + "'" + criteria->at(i) + "'";
         query.exec((queryString + "'" + criteria->at(i) + "'").toStdString().c_str());
     }
+
 }
 
 QList<Book> DatabaseBoundary::runLastSelectQuery()

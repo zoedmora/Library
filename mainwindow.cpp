@@ -113,6 +113,8 @@ QWidget* MainWindow::getWhiteBackgroundWidget()
  */
 void MainWindow::showResultsOnScreen(QList<Book> list)
 {
+    deleteOldResults();
+
     int listSize = list.size();
 
     if(listSize > 0)
@@ -363,6 +365,7 @@ QStringList* MainWindow::switchDeleteMode()
     {
         ui->deleteBookButton->setText("Finish Deleting");
         unhideCheckBoxesFromFrames();
+        //return booksToDelete;
     }
     else
     {
@@ -399,7 +402,7 @@ QStringList* MainWindow::switchDeleteMode()
                 //add to the list of edited books
                 booksToDelete->append(bookResults.at(i)->book->ISBN);
 
-                //add to the index list so we can know wich frames to delete
+                //add to the index list so we can know which frames to delete
                 indexToDeleteFrame.append(i);
             }
         }
@@ -415,6 +418,7 @@ QStringList* MainWindow::switchDeleteMode()
                 //then delete from layout
             qDebug() << "Will be deleting index: " << indexToDeleteFrame.at(k);
                 delete ui->bookFrameBoundary->layout()->takeAt(indexToDeleteFrame.at(k))->widget();
+            //ui->bookFrameBoundary->layout()->takeAt(0)-
                 //bookResults.removeAt(k);
         }
     }
