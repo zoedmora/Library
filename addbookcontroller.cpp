@@ -16,9 +16,6 @@ void addbookcontroller::run(MainWindow* mw, DatabaseBoundary *dbb)
     //okbutton clicked
     QObject::connect(add_book, SIGNAL(okButtonWasClicked(QStringList*)), dbb, SLOT(Add_Book(QStringList*)));
 
-    //scan
-    QObject::connect(add_book , SIGNAL(scanWasDone(QStringList*)), dbb, SLOT(addBookScanner(QStringList*)));
-
 }
 
 

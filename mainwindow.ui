@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>780</width>
+    <width>979</width>
     <height>554</height>
    </rect>
   </property>
@@ -66,6 +66,13 @@
         <widget class="QPushButton" name="deleteBookButton">
          <property name="text">
           <string>Delete</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="checkBookButton">
+         <property name="text">
+          <string>Check In/Out</string>
          </property>
         </widget>
        </item>
@@ -139,21 +146,8 @@
       <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
-      <item row="1" column="2">
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="3" column="1">
-       <spacer name="verticalSpacer">
+      <item row="0" column="1">
+       <spacer name="verticalSpacer_2">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
@@ -163,6 +157,19 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="2">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
           <height>20</height>
          </size>
         </property>
@@ -181,8 +188,8 @@
         </property>
        </spacer>
       </item>
-      <item row="0" column="1">
-       <spacer name="verticalSpacer_2">
+      <item row="3" column="1">
+       <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
@@ -303,8 +310,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>780</width>
-     <height>17</height>
+     <width>979</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

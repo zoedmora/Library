@@ -1,7 +1,10 @@
 #include "addusercontroller.h"
 #include <QPushButton>
 
-
+AddUserController::AddUserController(QObject *parent)
+    : QAbstractItemModel(parent)
+{
+}
 
 void AddUserController::run(MainWindow* mw, DatabaseBoundary* dbb)
 {
@@ -13,12 +16,6 @@ void AddUserController::run(MainWindow* mw, DatabaseBoundary* dbb)
     QObject::connect(auw, SIGNAL(confirmButtonWasClicked(QStringList*)), dbb, SLOT(addUserToDatabase(QStringList*)));
 
     auw->exec();
-}
-
-
-AddUserController::AddUserController(QObject *parent)
-    : QAbstractItemModel(parent)
-{
 }
 
 QVariant AddUserController::headerData(int section, Qt::Orientation orientation, int role) const

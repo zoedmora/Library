@@ -48,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->deleteUserButton->hide();
     ui->viewTransactionsButton->hide();
     ui->searchTransactionsButton->hide();
+    ui->checkBookButton->hide();
 }
 
 /**
@@ -182,6 +183,7 @@ void MainWindow::unhideRegularUserButtons()
     ui->payFeesButton->show();
     ui->viewProfileButton->show();
     ui->viewTransactionsButton->show();
+    ui->checkBookButton->show();
 }
 
 void MainWindow::hideAllExtraButtons()
@@ -195,6 +197,7 @@ void MainWindow::hideAllExtraButtons()
     ui->deleteUserButton->hide();
     ui->viewTransactionsButton->hide();
     ui->searchTransactionsButton->hide();
+    ui->checkBookButton->hide();
 }
 
 void MainWindow::hideCheckBoxesFromFrames()
