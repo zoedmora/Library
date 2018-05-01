@@ -50,6 +50,7 @@ signals:
     void deleteUserButtonClicked();
     void viewTransactionsButtonClicked();
     void searchTransactionsButtonClicked();
+    void checkBookButtonClicked();
 
 
 private:

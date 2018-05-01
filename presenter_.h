@@ -16,6 +16,7 @@
 #include "deleteusercontroller.h"
 #include "viewtransactionscontroller.h"
 #include "searchtransactionscontroller.h"
+#include "checkbookcontroller.h"
 
 class Presenter_ : public QAbstractItemModel
 {
@@ -52,6 +53,7 @@ private:
     ViewTransactionsController* viewTransactionsController;
     SearchTransactionsController* searchTransactionsController;
     DeleteUserController* deleteUserController;
+    checkbookcontroller* checkBookController;
 
 public:
 //Functions
@@ -73,6 +75,7 @@ public slots:
     void viewTransactions();
     void searchTransactions();
     void deleteUser();
+    void checkBook();
 
 };
 

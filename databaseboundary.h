@@ -61,6 +61,7 @@ public slots:
     void searchUserName(int);
     void deleteUserInDatabase(QStringList*);
     void searchUserDatabase(QStringList*);
+    void checkOut_In(QStringList*);
 
 private:
 //Variables

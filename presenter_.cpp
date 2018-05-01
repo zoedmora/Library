@@ -18,6 +18,7 @@ Presenter_::Presenter_(View_* v, Model_* m)
     viewTransactionsController = new ViewTransactionsController();
     searchTransactionsController = new SearchTransactionsController();
     deleteUserController = new DeleteUserController();
+    checkBookController = new checkbookcontroller();
 }
 
 /**
@@ -110,7 +111,11 @@ void Presenter_::deleteUser()
     deleteUserController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary());
 }
 
-
+void Presenter_::checkBook()
+{
+    qDebug() << "Presenter can see taht Check Book button was clicked.";
+    checkBookController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary());
+}
 
 
 

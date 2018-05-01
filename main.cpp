@@ -45,6 +45,9 @@ int main(int argc, char *argv[])
     // Search Transactions Button
     QObject::connect(v, SIGNAL(searchTransactionsButtonClicked()), p, SLOT(searchTransactions()));
 
+    // Check book Button
+    QObject::connect(v, SIGNAL(checkBookButtonClicked()), p, SLOT(checkBook()));
+
     //QObject::connect(v,SIGNAL(testSignal()), p, SLOT(testReceiver()));
 
     v->executeMainWindow();

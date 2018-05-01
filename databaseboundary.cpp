@@ -1,5 +1,6 @@
 #include "databaseboundary.h"
 #include <QString>
+#include <QTime>
 
 DatabaseBoundary::DatabaseBoundary(QObject *parent)
     : QAbstractItemModel(parent)
@@ -199,6 +200,31 @@ void DatabaseBoundary::addBookScanner(QStringList* isbnInfo)
       {
         qDebug() << "The book has not been added.";
       }
+}
+
+void DatabaseBoundary::checkOut_In(QStringList* isbnInfo)
+{
+     qDebug() << "Checking In/Out book";
+     QString isbn = isbnInfo->at(0);
+     QString userName = "hola";
+     QString date = QDate::currentDate().toString();
+     QString status_in = "in";
+     QString status_out = "out";
+     queryString = "INSERT INTO LibraryDB.CheckIn_Out(userName, ISBN, Date, Status)"
+                           "VALUES('" + userName + "','" + isbn + "','" + date + "','" + status_in + "')";
+
+     /*QSqlQuery*/ query = QSqlQuery();
+
+     qDebug() << "Query is: " << queryString;
+
+     query.exec(queryString.toStdString().c_str());
+
+     /*check if it worked */
+     if(query.numRowsAffected() == 1)
+     {
+       qDebug() << "Letting user know that we have success.";
+       isbnInfo->append("*");
+     }
 }
 
 void DatabaseBoundary::editUserDatabase(QStringList *userInfo)

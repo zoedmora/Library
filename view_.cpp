@@ -21,6 +21,7 @@ View_::View_(QObject *parent)
     QObject::connect(mainWindow->findChild<QPushButton*>("deleteUserButton"), SIGNAL(clicked()), this, SIGNAL(deleteUserButtonClicked())); //View Profile Button
     QObject::connect(mainWindow->findChild<QPushButton*>("viewTransactionsButton"), SIGNAL(clicked()), this, SIGNAL(viewTransactionsButtonClicked())); // View Transactions Button
     QObject::connect(mainWindow->findChild<QPushButton*>("searchTransactionsButton"), SIGNAL(clicked()), this, SIGNAL(searchTransactionsButtonClicked())); // Search Transactions Button
+    QObject::connect(mainWindow->findChild<QPushButton*>("checkBookButton"), SIGNAL(clicked()), this, SIGNAL(checkBookButtonClicked())); //Check out / In button
 }
 
 
