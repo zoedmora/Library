@@ -202,30 +202,122 @@ void DatabaseBoundary::addBookScanner(QStringList* isbnInfo)
       }
 }
 
-void DatabaseBoundary::checkOut_In(QStringList* isbnInfo)
+void DatabaseBoundary::checkOut_In(QString userName, QStringList* isbnInfo)
 {
      qDebug() << "Checking In/Out book";
      QString isbn = isbnInfo->at(0);
-     QString userName = "hola";
      QString date = QDate::currentDate().toString();
      QString status_in = "in";
      QString status_out = "out";
-     queryString = "INSERT INTO LibraryDB.CheckIn_Out(userName, ISBN, Date, Status)"
-                           "VALUES('" + userName + "','" + isbn + "','" + date + "','" + status_in + "')";
-
+     QString title;
+     QString id;
      /*QSqlQuery*/ query = QSqlQuery();
+
+     queryString = "SELECT idUser FROM LibraryDB.User WHERE userName= '" + userName + "';";
 
      qDebug() << "Query is: " << queryString;
 
      query.exec(queryString.toStdString().c_str());
 
-     /*check if it worked */
-     if(query.numRowsAffected() == 1)
+     while (query.next())
      {
-       qDebug() << "Letting user know that we have success.";
-       isbnInfo->append("*");
+         id = query.value(0).toString();
+     }
+
+     queryString = "SELECT Title FROM LibraryDB.Book WHERE ISBN= '" + isbn+ "';";
+
+     qDebug() << "Query is: " << queryString;
+
+     query.exec(queryString.toStdString().c_str());
+
+     while (query.next())
+     {
+         title = query.value(0).toString();
+     }
+
+     queryString = "SELECT count(*) FROM LibraryDB.TransactionHistory WHERE (userName = '" + userName + "'AND bookTitle = '" + title +"')";
+     qDebug() << "Query is: " << queryString;
+     query.exec(queryString.toStdString().c_str());
+     query.next();
+
+     //2 results means book is returned by user, can "check out same book again"
+     if(query.value(0).toInt() % 2 == 0 )
+     {
+         //Check if book is in stock
+         queryString = "SELECT Quantity FROM LibraryDB.Book WHERE Title = '" + title + "';";
+         qDebug() << "Query is: " << queryString;
+         query.exec(queryString.toStdString().c_str());
+         query.next();
+
+         if(query.value(0).toInt() > 0)
+         {
+             qDebug() << "Check out.";
+             queryString = "INSERT INTO LibraryDB.TransactionHistory(idUser, userName, bookTitle, transactionType, date)"
+                                        "VALUES('"+ id + "','" + userName + "','" + title + "','" + status_out + "','" + date + "')";
+             qDebug() << "Query is: " << queryString;
+             query.exec(queryString.toStdString().c_str());
+
+             queryString = "UPDATE LibraryDB.Book SET Quantity = Quantity - 1 WHERE ISBN = '" + isbn + "';";
+             qDebug() << "Query is: " << queryString;
+             query.exec(queryString.toStdString().c_str());
+
+             /*check if it worked */
+             if(query.numRowsAffected() == 1)
+             {
+               qDebug() << "Letting user know that we have success.";
+               isbnInfo->append("*");
+             }
+             else
+             {
+               qDebug() << "Check Out Failed.";
+             }
+         }
+
+         else
+         {
+             qDebug() << "Failed quantity is 0. Cannot check out.";
+             isbnInfo->append("X");
+         }
+     }
+     else if (query.value(0).toInt() % 2 == 1)
+     {
+
+         qDebug() << "Check In.";
+         queryString = "INSERT INTO LibraryDB.TransactionHistory(idUser, userName, bookTitle, transactionType, date)"
+                                        "VALUES('"+ id + "','" + userName + "','" + title + "','" + status_in + "','" + date + "')";
+         qDebug() << "Query is: " << queryString;
+         query.exec(queryString.toStdString().c_str());
+         queryString = "UPDATE LibraryDB.Book SET Quantity = Quantity + 1 WHERE ISBN = '" + isbn + "';";
+         qDebug() << "Query is: " << queryString;
+         query.exec(queryString.toStdString().c_str());
+         /*check if it worked */
+         if(query.numRowsAffected() == 1)
+         {
+            qDebug() << "Letting user know that we have success.";
+            isbnInfo->append("/");
+         }
+         else
+         {
+            qDebug() << "Check In Failed.";
+         }
      }
 }
+
+//     queryString = "INSERT INTO LibraryDB.CheckIn_Out(userName, ISBN, Date, Status)"
+//                           "VALUES('" + userName + "','" + isbn + "','" + date + "','" + status_in + "')";
+
+
+
+//     qDebug() << "Query is: " << queryString;
+
+//     query.exec(queryString.toStdString().c_str());
+
+//     /*check if it worked */
+//     if(query.numRowsAffected() == 1)
+//     {
+//       qDebug() << "Letting user know that we have success.";
+//       isbnInfo->append("*");
+//     }
 
 void DatabaseBoundary::editUserDatabase(QStringList *userInfo)
 {

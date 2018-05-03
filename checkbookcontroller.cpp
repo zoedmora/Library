@@ -1,20 +1,25 @@
 #include "checkbookcontroller.h"
 #include "checkbook.h"
+#include "logedinuserdata.h"
 
 checkbookcontroller::checkbookcontroller(QObject *parent)
     : QAbstractItemModel(parent)
 {
 }
 
-void checkbookcontroller::run(MainWindow* mw, DatabaseBoundary *dbb)
+void checkbookcontroller::run(MainWindow* mw, DatabaseBoundary *dbb, LogedInUserData* liud)
 {
     qDebug() << "Running Check Book Controller";
 
-    checkbook* check_book = new checkbook();
+    qDebug() << "User logged in is: " + liud->getLogedInUserName();
+
+    QString currentUser = liud->getLogedInUserName();
+
+    checkbook* check_book = new checkbook(currentUser);
     check_book->show();
 
     //okbutton clicked
-    QObject::connect(check_book, SIGNAL(confirmCheckButtonWasClicked(QStringList*)), dbb, SLOT(checkOut_In(QStringList*)));
+    QObject::connect(check_book, SIGNAL(confirmCheckButtonWasClicked(QString, QStringList*)), dbb, SLOT(checkOut_In(QString, QStringList*)));
 
 
 }

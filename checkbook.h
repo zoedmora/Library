@@ -15,16 +15,17 @@ class checkbook : public QDialog
     Q_OBJECT
 
 public:
-    explicit checkbook(QWidget *parent = 0);
+    explicit checkbook(QString, QWidget *parent = 0);
     ~checkbook();
     void accept();//overriding
 
 signals:
-    void confirmCheckButtonWasClicked(QStringList*);
+    void confirmCheckButtonWasClicked(QString, QStringList*);
 
 private:
     Ui::checkbook *ui;
     QStringList* isbnInfo;
+    QString user_Name;
 };
 
 #endif // CHECKBOOK_H
