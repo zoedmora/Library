@@ -114,7 +114,7 @@ void Presenter_::deleteUser()
 void Presenter_::checkBook()
 {
     qDebug() << "Presenter can see taht Check Book button was clicked.";
-    checkBookController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary());
+    checkBookController->run(view_p->getMainWindow(), model_p->getDatabaseBoundary(), model_p->getLogedInUserData());
 }
 
 
