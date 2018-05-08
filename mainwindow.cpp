@@ -48,7 +48,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->deleteUserButton->hide();
     ui->viewTransactionsButton->hide();
     ui->searchTransactionsButton->hide();
+
     ui->checkBookButton->hide();
+
+
+    setStyleSheet("QPushButton { font-size: 15px;  color:white; background-color: rgb(66, 134, 244);"
+                  "border: 1px solid green;  border-radius: 5px; padding-top: 3px; padding-bottom: 3px; padding-left: 12px; padding-right: 12px}"
+                  "QComboBox {color: Black; padding-left: 4px; padding-right: 30; font-size: 15px; }");
+
 }
 
 /**
@@ -172,7 +179,7 @@ void MainWindow::unhideEmployeeUserButtons()
     ui->editBookButton->show();
     ui->deleteBookButton->show();
     ui->addUserButton->show();
-    ui->viewProfileButton->show();
+    //ui->viewProfileButton->show();
     ui->deleteUserButton->show();
     ui->searchTransactionsButton->show();
 }
